@@ -1,0 +1,497 @@
+[
+  {
+    "id": "cpu-norte-6",
+    "slug": "processador-norte-6c",
+    "name": "Processador Norte 6C 12T",
+    "brand": "Norte",
+    "model": "N6-3600",
+    "category": "Processadores",
+    "description": "Exemplo demonstrativo de processador para computadores de uso geral e jogos.",
+    "specifications": {
+      "Núcleos": "6",
+      "Threads": "12",
+      "Socket": "AM4",
+      "Gráficos integrados": "Não"
+    },
+    "keywords": [
+      "cpu",
+      "desktop",
+      "pc gamer",
+      "am4"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "cpu-vale-8",
+    "slug": "processador-vale-8c",
+    "name": "Processador Vale 8C 16T",
+    "brand": "Vale",
+    "model": "V8-4800",
+    "category": "Processadores",
+    "description": "Produto fictício para demonstrar buscas por quantidade de núcleos e perfil de uso.",
+    "specifications": {
+      "Núcleos": "8",
+      "Threads": "16",
+      "Socket": "AM5",
+      "Gráficos integrados": "Sim"
+    },
+    "keywords": [
+      "cpu",
+      "desktop",
+      "pc gamer",
+      "am5"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "gpu-aurora-8",
+    "slug": "placa-de-video-aurora-8gb",
+    "name": "Placa de vídeo Aurora 8 GB",
+    "brand": "Aurora",
+    "model": "A8-Demo",
+    "category": "Placas de vídeo",
+    "description": "Exemplo fictício de placa gráfica para testar a navegação do catálogo.",
+    "specifications": {
+      "Memória": "8 GB GDDR6",
+      "Interface": "PCIe x16",
+      "Conexões": "HDMI, DisplayPort"
+    },
+    "keywords": [
+      "gpu",
+      "placa grafica",
+      "gaming",
+      "pc gamer"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "gpu-serra-12",
+    "slug": "placa-de-video-serra-12gb",
+    "name": "Placa de vídeo Serra 12 GB",
+    "brand": "Serra",
+    "model": "S12-Demo",
+    "category": "Placas de vídeo",
+    "description": "Produto demonstrativo sem especificações ou oferta de um fabricante real.",
+    "specifications": {
+      "Memória": "12 GB GDDR6",
+      "Interface": "PCIe x16",
+      "Conexões": "HDMI, DisplayPort"
+    },
+    "keywords": [
+      "gpu",
+      "placa grafica",
+      "gaming",
+      "pc gamer"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "ram-brisa-ddr4",
+    "slug": "memoria-brisa-ddr4-16gb",
+    "name": "Memória Brisa DDR4 16 GB",
+    "brand": "Brisa",
+    "model": "B16-3200",
+    "category": "Memórias RAM",
+    "description": "Exemplo de módulo de memória DDR4 para demonstrar filtros e busca por capacidade.",
+    "specifications": {
+      "Capacidade": "16 GB",
+      "Tipo": "DDR4",
+      "Velocidade": "3200 MT/s",
+      "Formato": "DIMM"
+    },
+    "keywords": [
+      "ram",
+      "memoria",
+      "desktop",
+      "3200",
+      "pc gamer"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "ram-brisa-ddr5",
+    "slug": "memoria-brisa-ddr5-32gb",
+    "name": "Memória Brisa DDR5 32 GB",
+    "brand": "Brisa",
+    "model": "B32-5600",
+    "category": "Memórias RAM",
+    "description": "Produto fictício para pesquisa por DDR5, memória e capacidade.",
+    "specifications": {
+      "Capacidade": "32 GB",
+      "Tipo": "DDR5",
+      "Velocidade": "5600 MT/s",
+      "Formato": "DIMM"
+    },
+    "keywords": [
+      "ram",
+      "memoria",
+      "desktop",
+      "5600",
+      "pc gamer"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "ssd-trilha-1tb",
+    "slug": "ssd-trilha-nvme-1tb",
+    "name": "SSD Trilha NVMe 1 TB",
+    "brand": "Trilha",
+    "model": "TN1-Gen4",
+    "category": "SSDs e armazenamento",
+    "description": "Exemplo fictício de unidade NVMe para demonstrar pesquisa por SSD e capacidade.",
+    "specifications": {
+      "Capacidade": "1 TB",
+      "Interface": "NVMe PCIe 4.0",
+      "Formato": "M.2 2280"
+    },
+    "keywords": [
+      "ssd",
+      "armazenamento",
+      "nvme",
+      "m.2",
+      "pc gamer"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "ssd-trilha-2tb",
+    "slug": "ssd-trilha-nvme-2tb",
+    "name": "SSD Trilha NVMe 2 TB",
+    "brand": "Trilha",
+    "model": "TN2-Gen4",
+    "category": "SSDs e armazenamento",
+    "description": "Produto demonstrativo com capacidade de 2 TB e interface NVMe.",
+    "specifications": {
+      "Capacidade": "2 TB",
+      "Interface": "NVMe PCIe 4.0",
+      "Formato": "M.2 2280"
+    },
+    "keywords": [
+      "ssd",
+      "armazenamento",
+      "nvme",
+      "m.2",
+      "pc gamer"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "ssd-caminho-sata",
+    "slug": "ssd-caminho-sata-480gb",
+    "name": "SSD Caminho SATA 480 GB",
+    "brand": "Caminho",
+    "model": "CS480",
+    "category": "SSDs e armazenamento",
+    "description": "Exemplo fictício de SSD SATA para computadores compatíveis.",
+    "specifications": {
+      "Capacidade": "480 GB",
+      "Interface": "SATA III",
+      "Formato": "2,5 polegadas"
+    },
+    "keywords": [
+      "ssd",
+      "armazenamento",
+      "sata",
+      "upgrade",
+      "pc antigo"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "board-mare-am4",
+    "slug": "placa-mae-mare-am4",
+    "name": "Placa-mãe Maré B550",
+    "brand": "Maré",
+    "model": "MB550-Demo",
+    "category": "Placas-mãe",
+    "description": "Produto fictício para testar buscas por socket, formato e chipset.",
+    "specifications": {
+      "Socket": "AM4",
+      "Chipset": "B550",
+      "Memória": "DDR4",
+      "Formato": "ATX"
+    },
+    "keywords": [
+      "motherboard",
+      "placa mae",
+      "desktop",
+      "pc gamer"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "board-mare-am5",
+    "slug": "placa-mae-mare-am5",
+    "name": "Placa-mãe Maré B650M",
+    "brand": "Maré",
+    "model": "MB650-Demo",
+    "category": "Placas-mãe",
+    "description": "Placa demonstrativa com plataforma AM5 e formato compacto.",
+    "specifications": {
+      "Socket": "AM5",
+      "Chipset": "B650",
+      "Memória": "DDR5",
+      "Formato": "Micro-ATX"
+    },
+    "keywords": [
+      "motherboard",
+      "placa mae",
+      "desktop",
+      "pc gamer"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "psu-facho-650",
+    "slug": "fonte-facho-650w",
+    "name": "Fonte Facho 650 W",
+    "brand": "Facho",
+    "model": "F650",
+    "category": "Fontes e gabinetes",
+    "description": "Exemplo fictício para demonstrar pesquisa por fonte e potência.",
+    "specifications": {
+      "Potência": "650 W",
+      "Certificação": "Não informada",
+      "Conexões": "ATX"
+    },
+    "keywords": [
+      "fonte",
+      "alimentacao",
+      "pc gamer",
+      "650w"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "case-pedra-mesh",
+    "slug": "gabinete-pedra-mesh",
+    "name": "Gabinete Pedra Mesh",
+    "brand": "Pedra",
+    "model": "PM-ATX",
+    "category": "Fontes e gabinetes",
+    "description": "Gabinete fictício de demonstração com foco em compatibilidade de componentes.",
+    "specifications": {
+      "Formato": "Mid tower",
+      "Placas-mãe": "ATX, Micro-ATX, Mini-ITX",
+      "Painel": "Mesh frontal"
+    },
+    "keywords": [
+      "gabinete",
+      "case",
+      "pc gamer",
+      "computador"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "monitor-lume-24",
+    "slug": "monitor-lume-24-fhd",
+    "name": "Monitor Lume 24 FHD",
+    "brand": "Lume",
+    "model": "L24-144",
+    "category": "Monitores",
+    "description": "Exemplo demonstrativo de monitor Full HD para pesquisa por tamanho e frequência.",
+    "specifications": {
+      "Tela": "24 polegadas",
+      "Resolução": "1920 × 1080",
+      "Frequência": "144 Hz",
+      "Conexões": "HDMI, DisplayPort"
+    },
+    "keywords": [
+      "monitor gamer",
+      "full hd",
+      "display",
+      "144hz"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "monitor-lume-27",
+    "slug": "monitor-lume-27-qhd",
+    "name": "Monitor Lume 27 QHD",
+    "brand": "Lume",
+    "model": "L27-165",
+    "category": "Monitores",
+    "description": "Produto fictício de 27 polegadas e resolução QHD para demonstração.",
+    "specifications": {
+      "Tela": "27 polegadas",
+      "Resolução": "2560 × 1440",
+      "Frequência": "165 Hz",
+      "Conexões": "HDMI, DisplayPort"
+    },
+    "keywords": [
+      "monitor gamer",
+      "qhd",
+      "display",
+      "165hz"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "keyboard-pulso-abnt",
+    "slug": "teclado-pulso-mecanico-abnt2",
+    "name": "Teclado mecânico Pulso ABNT2",
+    "brand": "Pulso",
+    "model": "P87-ABNT2",
+    "category": "Teclados e mouses",
+    "description": "Exemplo fictício de teclado mecânico com layout ABNT2.",
+    "specifications": {
+      "Tipo": "Mecânico",
+      "Layout": "ABNT2",
+      "Conexão": "USB com fio",
+      "Formato": "Tenkeyless"
+    },
+    "keywords": [
+      "teclado",
+      "mecanico",
+      "abnt2",
+      "pc gamer"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "mouse-onda-wireless",
+    "slug": "mouse-onda-sem-fio",
+    "name": "Mouse Onda sem fio",
+    "brand": "Onda",
+    "model": "O305",
+    "category": "Teclados e mouses",
+    "description": "Mouse sem fio fictício para demonstrar pesquisa por conexão e uso.",
+    "specifications": {
+      "Conexão": "Sem fio 2,4 GHz",
+      "Sensor": "Óptico",
+      "Botões": "6"
+    },
+    "keywords": [
+      "mouse",
+      "wireless",
+      "sem fio",
+      "gamer",
+      "periferico"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "headset-eco-usb",
+    "slug": "headset-eco-usb",
+    "name": "Headset Eco USB",
+    "brand": "Eco",
+    "model": "E-USB",
+    "category": "Headsets",
+    "description": "Produto demonstrativo com conexão USB e microfone integrado.",
+    "specifications": {
+      "Conexão": "USB-A",
+      "Microfone": "Integrado",
+      "Controles": "No cabo"
+    },
+    "keywords": [
+      "fone",
+      "audio",
+      "headphone",
+      "pc gamer",
+      "microfone"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "headset-eco-p2",
+    "slug": "headset-eco-p2",
+    "name": "Headset Eco P2",
+    "brand": "Eco",
+    "model": "E-P2",
+    "category": "Headsets",
+    "description": "Exemplo fictício de headset analógico com conector P2.",
+    "specifications": {
+      "Conexão": "P2 3,5 mm",
+      "Microfone": "Integrado",
+      "Controles": "No cabo"
+    },
+    "keywords": [
+      "fone",
+      "audio",
+      "headphone",
+      "p2",
+      "microfone"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "notebook-vento-14",
+    "slug": "notebook-vento-14",
+    "name": "Notebook Vento 14",
+    "brand": "Vento",
+    "model": "V14-Demo",
+    "category": "Notebooks e acessórios",
+    "description": "Notebook fictício para demonstrar pesquisa por categoria.",
+    "specifications": {
+      "Tela": "14 polegadas",
+      "Memória": "16 GB",
+      "Armazenamento": "SSD 512 GB",
+      "Sistema": "Não informado"
+    },
+    "keywords": [
+      "laptop",
+      "notebook",
+      "portatil",
+      "trabalho",
+      "estudo"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+    "id": "dock-ponte-usbc",
+    "slug": "dock-ponte-usb-c",
+    "name": "Dock Ponte USB-C",
+    "brand": "Ponte",
+    "model": "D7-C",
+    "category": "Notebooks e acessórios",
+    "description": "Acessório demonstrativo para expansão de conexões USB-C.",
+    "specifications": {
+      "Conexão": "USB-C",
+      "Portas": "USB-A, HDMI, leitor de cartão",
+      "Alimentação": "USB-C"
+    },
+    "keywords": [
+      "adaptador",
+      "acessorio",
+      "notebook",
+      "usb c",
+      "hub"
+    ],
+    "dataSource": "Produto fictício para demonstração do catálogo",
+    "isDemo": true
+  },
+  {
+  "name": "SSD ADATA SU650 240GB",
+  "category": "SSDs e armazenamento",
+  "brand": "ADATA",
+  "model": "SU650",
+  "image": "/products/images/SDD-SU650.jpg",
+  "specifications": {
+    "Capacidade": "240 GB",
+    "Interface": "SATA III, 2,5 polegadas"
+  },
+  "dataSource": "Especificações conferidas na página do fabricante",
+  "isDemo": false
+}
+]
