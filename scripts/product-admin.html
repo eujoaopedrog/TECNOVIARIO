@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Cadastro de produtos | Tecnoviario</title>
+    <style>
+      :root { font-family: "Segoe UI", Arial, sans-serif; color: #172033; background: #f1f5f9; font-synthesis: none; }
+      * { box-sizing: border-box; }
+      [hidden] { display: none !important; }
+      body { margin: 0; }
+      main { width: min(760px, calc(100% - 32px)); margin: 38px auto; }
+      header { margin-bottom: 22px; }
+      .brand { color: #2563eb; font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+      h1 { margin: 9px 0; font-size: clamp(27px, 5vw, 36px); letter-spacing: -.04em; }
+      header p, .hint { color: #64748b; line-height: 1.55; }
+      form, .notice { padding: 24px; border: 1px solid #dbe3ee; border-radius: 14px; background: white; box-shadow: 0 12px 34px #1720330a; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      label { display: grid; gap: 7px; margin-bottom: 16px; font-size: 13px; font-weight: 700; }
+      input, textarea { width: 100%; min-height: 43px; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; background: white; color: #172033; font: inherit; font-size: 14px; }
+      textarea { min-height: 105px; resize: vertical; }
+      input:focus, textarea:focus { border-color: #2563eb; outline: 3px solid #dbeafe; }
+      input[type="file"] { padding: 8px; }
+      .hint { margin: -9px 0 17px; font-size: 12px; font-weight: 400; }
+      .preview { display: none; width: 116px; height: 116px; margin: -3px 0 16px; border: 1px solid #dbe3ee; border-radius: 9px; object-fit: contain; }
+      .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 7px; }
+      button { min-height: 44px; padding: 0 18px; border: 0; border-radius: 8px; background: #2563eb; color: white; font: inherit; font-weight: 700; cursor: pointer; }
+      button:disabled { opacity: .6; cursor: wait; }
+      .count { color: #64748b; font-size: 12px; }
+      .notice { display: none; margin-top: 16px; border-color: #a7f3d0; background: #ecfdf5; color: #065f46; line-height: 1.55; }
+      .notice.error { border-color: #fecaca; background: #fef2f2; color: #991b1b; }
+      .notice a { color: inherit; font-weight: 700; }
+      @media (max-width: 560px) { main { margin: 22px auto; } form, .notice { padding: 18px; } .grid { grid-template-columns: 1fr; gap: 0; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="brand">Tecnoviario · ferramenta local</div>
+        <h1>Adicionar produto</h1>
+        <p>Preencha os dados que você confirmou. O cadastro é salvo direto no catálogo do site neste computador.</p>
+      </header>
+      <form id="product-form">
+        <div class="grid">
+          <label>Nome do produto *
+            <input name="name" required maxlength="140" placeholder="Ex.: SSD Marca Modelo 1 TB">
+          </label>
+          <label>Categoria *
+            <select name="category" id="category-select" required>
+              <option value="">Selecione uma categoria</option>
+              <option>Processadores</option>
+              <option>Placas de vídeo</option>
+              <option>Memórias RAM</option>
+              <option>SSDs e armazenamento</option>
+              <option>Placas-mãe</option>
+              <option>Fontes e gabinetes</option>
+              <option>Monitores</option>
+              <option>Teclados e mouses</option>
+              <option>Headsets</option>
+              <option>Notebooks e acessórios</option>
+              <option>Periféricos</option>
+              <option value="__custom__">Outra categoria...</option>
+            </select>
+          </label>
+        </div>
+        <label id="custom-category-label" hidden>Digite outra categoria *
+          <input id="custom-category" maxlength="80" placeholder="Ex.: Cadeiras gamer" disabled>
+        </label>
+        <div class="grid">
+          <label>Marca
+            <input name="brand" maxlength="80" placeholder="Ex.: Marca">
+          </label>
+          <label>Modelo
+            <input name="model" maxlength="100" placeholder="Ex.: Modelo 1 TB">
+          </label>
+        </div>
+        <label>Descrição
+          <textarea name="description" maxlength="500" placeholder="Descrição original com informações conferidas."></textarea>
+        </label>
+        <label>Foto autorizada do produto
+          <input name="image" type="file" accept="image/jpeg,image/png,image/webp">
+        </label>
+        <p class="hint">JPG, PNG ou WebP até 8 MB. A ferramenta copia a imagem para a pasta do site. Não use imagem da Amazon sem autorização.</p>
+        <img class="preview" id="image-preview" alt="Prévia da imagem selecionada">
+        <div class="grid">
+          <label>Preço em reais
+            <input name="price" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex.: 5.939,90" aria-describedby="price-hint">
+          </label>
+          <label>Link da loja ou afiliado
+            <input name="affiliateUrl" type="url" placeholder="https://...">
+          </label>
+        </div>
+        <p class="hint" id="price-hint">Digite como no Brasil, por exemplo <strong>5.939,90</strong>. Também aceita 5939,90 ou 5,939.90.</p>
+        <label>Especificações
+          <textarea name="specifications" placeholder="Escreva uma especificação por linha&#10;Capacidade: 1 TB&#10;Interface: NVMe&#10;Também pode colar uma lista simples, sem dois-pontos"></textarea>
+        </label>
+        <p class="hint">Pode escrever “Campo: valor” ou colar uma informação por linha. As linhas sem campo recebem o nome “Detalhe”.</p>
+        <details class="compatibility-fields">
+          <summary>Dados técnicos para checar compatibilidade (opcional)</summary>
+          <p class="hint">Preencha somente quando confirmar a informação na página do fabricante. Campos vazios serão mostrados como “não verificado” no montador.</p>
+          <div class="grid">
+            <label>Soquete do processador ou placa-mãe
+              <input name="socket" maxlength="60" placeholder="Ex.: AM4">
+            </label>
+            <label>Tipo desta memória RAM
+              <input name="memoryType" maxlength="60" placeholder="Ex.: DDR4">
+            </label>
+          </div>
+          <label>Tipos de memória aceitos pela placa-mãe
+            <input name="supportedMemoryTypes" maxlength="120" placeholder="Ex.: DDR4 ou DDR4, DDR5">
+          </label>
+          <div class="grid">
+            <label>Formato desta placa-mãe
+              <input name="formFactor" maxlength="60" placeholder="Ex.: micro-ATX">
+            </label>
+            <label>Formatos aceitos pelo gabinete
+              <input name="supportedFormFactors" maxlength="120" placeholder="Ex.: ATX, micro-ATX, Mini-ITX">
+            </label>
+          </div>
+          <div class="grid">
+            <label>Interface deste armazenamento
+              <input name="storageInterface" maxlength="60" placeholder="Ex.: SATA ou NVMe">
+            </label>
+            <label>Interfaces de armazenamento aceitas pela placa-mãe
+              <input name="supportedStorageInterfaces" maxlength="120" placeholder="Ex.: SATA, NVMe">
+            </label>
+          </div>
+          <div class="grid">
+            <label>Potência desta fonte (W)
+              <input name="psuWattage" type="number" min="1" max="20000" step="1" placeholder="Ex.: 650">
+            </label>
+            <label>Potência mínima recomendada para esta placa de vídeo (W)
+              <input name="minimumPsuWatts" type="number" min="1" max="20000" step="1" placeholder="Consulte o fabricante">
+            </label>
+          </div>
+          <label>O processador tem vídeo integrado?
+            <select name="integratedGraphics">
+              <option value="">Não sei / não conferi</option>
+              <option value="yes">Sim</option>
+              <option value="no">Não</option>
+            </select>
+          </label>
+        </details>
+        <p class="hint">Se informar o preço, a data de hoje é gravada automaticamente. Preços cadastrados há mais de 24 horas não aparecem no site.</p>
+        <label>Fonte das informações
+          <input name="dataSource" maxlength="200" placeholder="Ex.: Página oficial do fabricante">
+        </label>
+        <div class="actions">
+          <button id="submit-button" type="submit">Salvar produto</button>
+          <span class="count" id="product-count"></span>
+        </div>
+      </form>
+      <div class="notice" id="notice" role="status" aria-live="polite"></div>
+    </main>
+    <script nonce="__ADMIN_TOKEN__">
+      const adminToken = '__ADMIN_TOKEN__'
+      const form = document.querySelector('#product-form')
+      const submitButton = document.querySelector('#submit-button')
+      const notice = document.querySelector('#notice')
+      const imageInput = form.elements.image
+      const imagePreview = document.querySelector('#image-preview')
+      const count = document.querySelector('#product-count')
+      const categorySelect = document.querySelector('#category-select')
+      const customCategoryLabel = document.querySelector('#custom-category-label')
+      const customCategory = document.querySelector('#custom-category')
+
+      function showNotice(message, isError = false) {
+        notice.className = `notice${isError ? ' error' : ''}`
+        notice.textContent = message
+        notice.style.display = 'block'
+      }
+
+      async function loadCategories() {
+        const response = await fetch('/api/categories')
+        const result = await response.json()
+        if (!response.ok) throw new Error(result.error || 'Não foi possível carregar as categorias.')
+        const knownCategories = new Set(
+          Array.from(categorySelect.options, (option) => option.value).filter((value) => value && value !== '__custom__'),
+        )
+        for (const category of result.categories) {
+          if (knownCategories.has(category)) continue
+          const option = document.createElement('option')
+          option.value = category
+          option.textContent = category
+          categorySelect.insertBefore(option, categorySelect.lastElementChild)
+          knownCategories.add(category)
+        }
+        count.textContent = `${result.productCount} produto(s) no catálogo`
+      }
+
+      categorySelect.addEventListener('change', () => {
+        const useCustomCategory = categorySelect.value === '__custom__'
+        customCategoryLabel.hidden = !useCustomCategory
+        customCategory.disabled = !useCustomCategory
+        customCategory.required = useCustomCategory
+        if (useCustomCategory) customCategory.focus()
+      })
+
+      imageInput.addEventListener('change', () => {
+        const file = imageInput.files[0]
+        if (!file) {
+          imagePreview.removeAttribute('src')
+          imagePreview.style.display = 'none'
+          return
+        }
+        imagePreview.src = URL.createObjectURL(file)
+        imagePreview.style.display = 'block'
+      })
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault()
+        submitButton.disabled = true
+        notice.style.display = 'none'
+        try {
+          const formData = new FormData(form)
+          const payload = Object.fromEntries(formData.entries())
+          if (payload.category === '__custom__') payload.category = customCategory.value.trim()
+          const imageFile = imageInput.files[0]
+          delete payload.image
+          if (imageFile) {
+            if (imageFile.size > 8 * 1024 * 1024) throw new Error('A imagem precisa ter no máximo 8 MB.')
+            payload.image = {
+              type: imageFile.type,
+              data: (await new Promise((resolve, reject) => {
+                const reader = new FileReader()
+                reader.onload = () => resolve(String(reader.result).split(',')[1])
+                reader.onerror = () => reject(new Error('Não foi possível ler a imagem selecionada.'))
+                reader.readAsDataURL(imageFile)
+              })),
+            }
+          }
+          const response = await fetch('/api/products', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-Admin-Token': adminToken },
+            body: JSON.stringify(payload),
+          })
+          const result = await response.json()
+          if (!response.ok) throw new Error(result.error || 'Não foi possível salvar o produto.')
+          form.reset()
+          imagePreview.removeAttribute('src')
+          imagePreview.style.display = 'none'
+          await loadCategories()
+          showNotice(`Produto "${result.product.name}" salvo! Agora reinicie ou atualize o site e confira o cadastro antes de publicar.`)
+        } catch (error) {
+          showNotice(error instanceof Error ? error.message : 'Não foi possível salvar o produto.', true)
+        } finally {
+          submitButton.disabled = false
+        }
+      })
+
+      loadCategories().catch((error) => showNotice(error.message, true))
+    </script>
+  </body>
+</html>
