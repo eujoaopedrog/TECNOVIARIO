@@ -25,7 +25,6 @@ export function ProductCard({ product, compact = false }: ProductCardProps) {
             <small>Imagem não cadastrada</small>
           </div>
         )}
-        {product.isDemo && <span className="demo-tag">Demonstração</span>}
       </Link>
       <div className="product-card-content">
         <span className="product-category">{product.category}</span>
@@ -35,7 +34,9 @@ export function ProductCard({ product, compact = false }: ProductCardProps) {
           {keySpecs.map(([label, value]) => <span key={label}>{label}: {value}</span>)}
         </div>
         <div className="product-card-bottom">
-          <span className="price-unavailable">{currentPrice === undefined ? 'Preço não informado' : currentPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
+          <span className={`product-card-price${currentPrice === undefined ? ' price-unavailable' : ''}`}>
+            {currentPrice === undefined ? 'Preço não informado' : currentPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+          </span>
           <Link className="card-link" to={`/produto/${product.slug}`} aria-label={`Ver ${product.name}`}>
             Ver produto <ArrowUpRight size={16} />
           </Link>

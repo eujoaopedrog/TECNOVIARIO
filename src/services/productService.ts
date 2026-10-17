@@ -1,7 +1,7 @@
 import { products } from '../data/products'
 import type { Product, ProductFilters } from '../types/product'
 
-const searchStopWords = new Set(['a', 'as', 'ao', 'aos', 'com', 'da', 'das', 'de', 'do', 'dos', 'e', 'em', 'na', 'nas', 'no', 'nos', 'o', 'os', 'para', 'por', 'um', 'uma', 'uns', 'umas', 'que', 'produto', 'produtos', 'exemplo', 'ficticio', 'ficticia', 'demonstracao', 'demonstrativo'])
+const searchStopWords = new Set(['a', 'as', 'ao', 'aos', 'com', 'da', 'das', 'de', 'do', 'dos', 'e', 'em', 'na', 'nas', 'no', 'nos', 'o', 'os', 'para', 'por', 'um', 'uma', 'uns', 'umas', 'que', 'produto', 'produtos'])
 const productDataMaxAgeMs = 24 * 60 * 60 * 1000
 
 export function getCurrentPrice(product: Product, now = Date.now()): number | undefined {

@@ -2,41 +2,32 @@
 
 Portal de tecnologia com catálogo local em JSON, pesquisa responsiva, páginas de produto e guias editoriais. O site é estático: não exige banco de dados, credenciais nem serviços pagos para funcionar.
 
-## Adicionar um produto
+## Adicionar um produto pela página local
 
-1. Obtenha uma foto que você tenha autorização para publicar. Otimize-a como JPG ou WebP e coloque o arquivo em `public/products/images/`, por exemplo `ssd-marca-modelo.webp`.
-2. Abra `src/data/products.json` e adicione um novo objeto ao array, separando os itens com vírgula:
+1. Abra o CMD na pasta do projeto e execute `npm.cmd run admin:products`.
+2. Deixe essa janela aberta e acesse `http://127.0.0.1:4179` no navegador. A ferramenta funciona somente neste computador e não é publicada no site.
+3. Preencha nome e categoria; os outros dados são opcionais. Para preço, use o formato brasileiro, por exemplo `5.939,90` (também aceita `5939,90` e `5,939.90`). Você pode escolher uma foto JPG, PNG ou WebP autorizada (até 8 MB), informar o link e adicionar especificações, uma por linha no formato `Campo: valor`.
+4. Clique em **Salvar produto**. A ferramenta atualiza `src/data/products.json` e copia a foto escolhida para `public/products/images/`. Se informar um preço, a data é preenchida automaticamente.
+5. Confira o produto no site local. Para publicar, use `npm.cmd run build` e publique as alterações pelo GitHub/Cloudflare Pages. O preço deixa de aparecer depois de 24 horas e deve ser atualizado com o valor confirmado.
 
-```json
-{
-  "name": "SSD Marca Modelo 1 TB",
-  "category": "SSDs e armazenamento",
-  "brand": "Marca",
-  "model": "Modelo 1 TB",
-  "description": "Descrição original com informações conferidas na fonte indicada.",
-  "image": "/products/images/ssd-marca-modelo.webp",
-  "specifications": {
-    "Capacidade": "1 TB",
-    "Interface": "NVMe PCIe 4.0"
-  },
-  "keywords": ["ssd", "nvme", "1 tb"],
-  "dataSource": "Especificações confirmadas na página oficial do fabricante em 2026-10-16",
-  "isDemo": false
-}
-```
+Para encerrar a ferramenta, volte ao CMD e pressione `Ctrl+C`. O método manual de editar `src/data/products.json` continua disponível se necessário.
 
-3. Salve. `id` e `slug` são gerados a partir do nome se forem omitidos. `brand`, `model`, `description`, `specifications` e `keywords` também podem ser omitidos.
-4. Execute `npm.cmd run dev`, abra o endereço local informado e procure o produto. Quando estiver pronto, use `npm.cmd run build` e publique a alteração pelo GitHub/Cloudflare Pages.
+## Montador de PC e compatibilidade
 
-Use nomes de arquivo simples, sem espaços, como `ssd-marca-modelo.webp`. O caminho de `image` precisa começar com `/products/images/`. Se a foto não estiver nessa pasta ou o caminho estiver incorreto, o site mostra o placeholder. Imagens locais aparecem nos cartões e na página de detalhes.
+- Acesse **Montar meu PC** na navegação ou abra `/montar-pc`. O montador lista os componentes existentes, soma somente preços com atualização válida (menos de 24 horas) e reúne os links de compra dos itens selecionados.
+- Componentes essenciais sem cadastro aparecem como pendentes; eles não são inventados nem substituídos por produtos fictícios.
+- Para permitir uma checagem de compatibilidade, expanda **Dados técnicos para checar compatibilidade** no cadastro e informe somente dados confirmados pelo fabricante: soquete, padrão DDR, formato da placa/gabinete, interfaces de armazenamento, potência da fonte e mínimo recomendado pela placa de vídeo, além de vídeo integrado do processador quando aplicável.
+- As regras comparam soquete CPU/placa-mãe, memória/placa-mãe, formato placa-mãe/gabinete, interface de armazenamento e potência mínima informada para GPU. Dado ausente resulta em **Não verificado**, nunca em aprovação.
+- As verificações são parciais, não uma garantia de funcionamento: BIOS, conectores, dimensões físicas, revisão exata e outros requisitos podem não estar cadastrados. Confirme a lista de compatibilidade e os manuais oficiais antes de comprar.
+- A página funciona sem serviço de IA externo. Uma IA generativa opcional exigiria escolher e configurar um provedor no servidor; ela não substituiria as regras nem poderia prometer compatibilidade sem erro.
 
 ### Dados comerciais
 
-- Não cadastre preço até confirmar que é correto, atual e permitido pela fonte. Preço é opcional; se informado, use o valor numérico em reais, por exemplo `"price": 499.9`.
+- Não cadastre preço até confirmar que é correto, atual e permitido pela fonte. No formulário, preço é opcional e aceita formato brasileiro (por exemplo `5.939,90`) ou sem separador de milhar (`5939,90`). No JSON, use um número, por exemplo `"price": 5939.90`.
 - Só preencha `priceUpdatedAt` com uma data/hora ISO 8601 comprovável, incluindo fuso horário, por exemplo `"2026-10-16T19:00:00-03:00"`. O site só mostra preços com data válida e menor que 24 horas; preços mais antigos ficam ocultos.
 - `affiliateUrl` deve conter um link válido e autorizado para aquele produto. Sem ele, o botão de compra não é habilitado.
 - Use `dataSource` para registrar onde e quando verificou as informações. Não invente avaliações, especificações, ofertas ou estoque.
-- O catálogo inicial tem 21 exemplos fictícios, marcados com `"isDemo": true`. Mantenha esse marcador apenas nos exemplos e remova-os do catálogo quando substituí-los por dados reais.
+- Não cadastre produtos, especificações ou links que não correspondam ao item anunciado. Adicione somente produtos reais com dados conferidos.
 
 ## Importante sobre fotos da Amazon
 
@@ -100,6 +91,6 @@ O serviço valida campos obrigatórios, gera `id` e `slug` quando ausentes, acei
 - Filtros por categoria e marca; ordenação por nome.
 - Detalhes de produto, páginas de guias e páginas institucionais.
 - Sem scraping, cadastro de usuário, carrinho, pagamento ou API de afiliados.
-- O catálogo de demonstração não possui preços nem links comerciais reais.
+- Os produtos só exibem preços com data de atualização válida e inferior a 24 horas.
 
 Valide a compatibilidade e os direitos de uso das informações antes de publicar cada item. Esta documentação não substitui as políticas e os termos atualizados da Amazon ou dos titulares das imagens.

@@ -7,6 +7,7 @@ import { HomePage } from './pages/HomePage'
 import { InfoPage } from './pages/InfoPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { ProductPage } from './pages/ProductPage'
+import { PcBuilderPage } from './pages/PcBuilderPage'
 import { SearchPage } from './pages/SearchPage'
 
 function ToastListener() {
@@ -34,6 +35,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/pesquisa" element={<SearchPage />} />
             <Route path="/produto/:slug" element={<ProductPage />} />
+            <Route path="/montar-pc" element={<PcBuilderPage />} />
             <Route path="/guias" element={<GuidesPage />} />
             <Route path="/guias/:slug" element={<GuidesPage />} />
             <Route path="/sobre" element={<InfoPage />} />

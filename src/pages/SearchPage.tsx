@@ -30,7 +30,7 @@ export function SearchPage() {
 
   return (
     <main className="page-shell search-page">
-      <PageMeta title={title} description="Resultados da pesquisa no catálogo demonstrativo Tecnoviario." noIndex />
+      <PageMeta title={title} description="Pesquise produtos de tecnologia no catálogo Tecnoviario." noIndex />
       <div className="breadcrumb"><Link to="/">Início</Link><span>/</span><span>Pesquisa</span></div>
       <div className="results-heading">
         <div><span className="section-kicker">PESQUISA DE PRODUTOS</span><h1>{title}</h1><p>{products.length} {products.length === 1 ? 'produto encontrado' : 'produtos encontrados'} no catálogo Tecnoviario</p></div>
@@ -73,7 +73,7 @@ export function SearchPage() {
           ) : (
             <div className="empty-state"><span className="empty-icon"><PackageSearch size={28} /></span><h2>Nenhum produto encontrado</h2><p>Tente outros termos ou remova um filtro. A busca considera nomes, marcas, categorias e especificações.</p><SearchBox initialQuery={query} onSearch={(value) => updateParam('q', value)} /></div>
           )}
-          <p className="catalog-disclaimer">Itens marcados como demonstração são fictícios e não representam ofertas reais. Confirme dados, preço e disponibilidade com as fontes antes de comprar.</p>
+          <p className="catalog-disclaimer">Confirme preço, disponibilidade e condições diretamente na loja antes de comprar.</p>
         </section>
       </div>
     </main>

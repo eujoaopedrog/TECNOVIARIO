@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "admin:products": "node scripts/product-admin.mjs",
     "build": "tsc -b && vite build",
     "preview": "vite preview"
   },

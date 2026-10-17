@@ -1,5 +1,5 @@
 import catalog from './products.json'
-import type { Product } from '../types/product'
+import type { Product, ProductCompatibility } from '../types/product'
 
 interface CatalogEntry {
   id?: string
@@ -12,11 +12,11 @@ interface CatalogEntry {
   specifications?: Record<string, string | undefined>
   keywords?: string[]
   dataSource?: string
-  isDemo?: boolean
   image?: string
   price?: number
   priceUpdatedAt?: string
   affiliateUrl?: string
+  compatibility?: ProductCompatibility
 }
 
 const catalogEntries = catalog as CatalogEntry[]
@@ -30,6 +30,30 @@ function createSlug(value: string): string {
     .toLocaleLowerCase('pt-BR')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '')
+}
+
+function normalizeCompatibility(value: ProductCompatibility | undefined): ProductCompatibility | undefined {
+  if (!value || typeof value !== 'object') return undefined
+  const text = (candidate: unknown) => typeof candidate === 'string' && candidate.trim() ? candidate.trim() : undefined
+  const list = (candidate: unknown) => Array.isArray(candidate)
+    ? candidate.filter((item): item is string => typeof item === 'string' && Boolean(item.trim())).map((item) => item.trim())
+    : undefined
+  const positiveNumber = (candidate: unknown) => typeof candidate === 'number' && Number.isFinite(candidate) && candidate > 0
+    ? candidate
+    : undefined
+  const normalized: ProductCompatibility = {
+    ...(text(value.socket) ? { socket: text(value.socket) } : {}),
+    ...(text(value.memoryType) ? { memoryType: text(value.memoryType) } : {}),
+    ...(list(value.supportedMemoryTypes) ? { supportedMemoryTypes: list(value.supportedMemoryTypes) } : {}),
+    ...(text(value.formFactor) ? { formFactor: text(value.formFactor) } : {}),
+    ...(list(value.supportedFormFactors) ? { supportedFormFactors: list(value.supportedFormFactors) } : {}),
+    ...(text(value.storageInterface) ? { storageInterface: text(value.storageInterface) } : {}),
+    ...(list(value.supportedStorageInterfaces) ? { supportedStorageInterfaces: list(value.supportedStorageInterfaces) } : {}),
+    ...(positiveNumber(value.psuWattage) ? { psuWattage: positiveNumber(value.psuWattage) } : {}),
+    ...(positiveNumber(value.minimumPsuWatts) ? { minimumPsuWatts: positiveNumber(value.minimumPsuWatts) } : {}),
+    ...(typeof value.integratedGraphics === 'boolean' ? { integratedGraphics: value.integratedGraphics } : {}),
+  }
+  return Object.keys(normalized).length ? normalized : undefined
 }
 
 export const products: Product[] = catalogEntries.map((entry, index) => {
@@ -49,6 +73,7 @@ export const products: Product[] = catalogEntries.map((entry, index) => {
   }
   seenIds.add(id)
   seenSlugs.add(slug)
+  const compatibility = normalizeCompatibility(entry.compatibility)
 
   return {
     id,
@@ -65,10 +90,10 @@ export const products: Product[] = catalogEntries.map((entry, index) => {
     ),
     keywords: entry.keywords ?? [],
     dataSource: entry.dataSource?.trim() || 'Informado manualmente pelo editor',
-    isDemo: entry.isDemo ?? false,
     ...(entry.image ? { image: entry.image } : {}),
     ...(typeof entry.price === 'number' ? { price: entry.price } : {}),
     ...(entry.priceUpdatedAt ? { priceUpdatedAt: entry.priceUpdatedAt } : {}),
     ...(entry.affiliateUrl ? { affiliateUrl: entry.affiliateUrl } : {}),
+    ...(compatibility ? { compatibility } : {}),
   }
 })

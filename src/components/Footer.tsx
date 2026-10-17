@@ -19,7 +19,7 @@ export function Footer() {
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Tecnoviario. Projeto independente.</span>
-          <span>Produtos de demonstração não são ofertas reais.</span>
+          <span>Preços e disponibilidade devem ser confirmados na loja.</span>
         </div>
       </div>
     </footer>

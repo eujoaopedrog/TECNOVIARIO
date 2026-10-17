@@ -1,3 +1,16 @@
+export interface ProductCompatibility {
+  socket?: string
+  memoryType?: string
+  supportedMemoryTypes?: string[]
+  formFactor?: string
+  supportedFormFactors?: string[]
+  storageInterface?: string
+  supportedStorageInterfaces?: string[]
+  psuWattage?: number
+  minimumPsuWatts?: number
+  integratedGraphics?: boolean
+}
+
 export interface Product {
   id: string
   slug: string
@@ -9,11 +22,11 @@ export interface Product {
   specifications: Record<string, string>
   keywords: string[]
   dataSource: string
-  isDemo: boolean
   image?: string
   price?: number
   priceUpdatedAt?: string
   affiliateUrl?: string
+  compatibility?: ProductCompatibility
 }
 
 export interface ProductFilters {

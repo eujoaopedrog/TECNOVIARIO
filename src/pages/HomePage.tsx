@@ -1,5 +1,5 @@
 import {
-  ArrowRight, AudioLines, Cpu, HardDrive, Laptop, MemoryStick, Monitor, Mouse, PanelsTopLeft, PlugZap, Search, ShieldCheck,
+  ArrowRight, AudioLines, Cpu, HardDrive, Laptop, MemoryStick, Monitor, Mouse, PanelsTopLeft, PlugZap, Search, ShieldCheck, Wrench,
 } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ProductCard } from '../components/ProductCard'
@@ -25,7 +25,7 @@ const categoryIcons: Record<string, typeof Cpu> = {
 export function HomePage() {
   const navigate = useNavigate()
   const categories = getCategories()
-  const featured = [products[6], products[15], products[4], products[12]]
+  const featured = products.slice(0, 4)
   const selectedGuides = guides.slice(0, 3)
 
   return (
@@ -39,6 +39,7 @@ export function HomePage() {
             <p>Pesquise, compare e descubra produtos para seu setup, com informações que ajudam você a escolher melhor.</p>
             <SearchBox large />
             <div className="hero-trust"><ShieldCheck size={16} /><span>Busca transparente. Sem preços inventados ou ofertas falsas.</span></div>
+            <Link className="builder-hero-link" to="/montar-pc"><Wrench size={17} /> Montar meu PC <ArrowRight size={16} /></Link>
           </div>
           <div className="hero-art" aria-hidden="true">
             <div className="art-grid" />
@@ -77,13 +78,16 @@ export function HomePage() {
         <section className="featured-section">
           <div className="page-shell">
             <div className="section-heading">
-              <div><span className="section-kicker">EXPLORE O CATÁLOGO</span><h2>Uma amostra para começar</h2><p>Exemplos fictícios para testar a pesquisa — sem preço ou link de compra.</p></div>
+              <div><span className="section-kicker">CATÁLOGO TECNOVIARIO</span><h2>Produtos para conhecer</h2><p>Confira as informações e especificações cadastradas para cada produto.</p></div>
               <Link className="text-link" to="/pesquisa">Explorar produtos <ArrowRight size={16} /></Link>
             </div>
-            <div className="product-grid">
-              {featured.map((product) => <ProductCard key={product.id} product={product} />)}
-            </div>
-            <div className="demo-notice"><ShieldCheck size={18} /><span><strong>Transparência em primeiro lugar.</strong> Todos os itens deste catálogo são exemplos fictícios. Não representam produtos, preços ou ofertas reais.</span></div>
+              {featured.length ? (
+                <div className="product-grid">
+                  {featured.map((product) => <ProductCard key={product.id} product={product} />)}
+                </div>
+              ) : (
+                <div className="empty-state"><span className="empty-icon"><HardDrive size={28} /></span><h2>Os próximos produtos estão a caminho</h2><p>Estamos preparando o catálogo. Volte em breve para encontrar novos produtos.</p></div>
+              )}
           </div>
         </section>
 

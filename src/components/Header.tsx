@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { BrandLogo } from './BrandLogo'
 import { SearchBox } from './SearchBox'
+import { getCategories } from '../services/productService'
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -23,9 +24,11 @@ export function Header() {
       </div>
       <nav className={`header-nav${menuOpen ? ' header-nav-open' : ''}`} aria-label="Navegação principal">
         <div className="page-shell nav-inner">
-          <Link to="/pesquisa?categoria=Processadores" onClick={() => setMenuOpen(false)}>Componentes</Link>
-          <Link to="/pesquisa?categoria=Teclados%20e%20mouses" onClick={() => setMenuOpen(false)}>Periféricos</Link>
-          <Link to="/pesquisa?categoria=Notebooks%20e%20acess%C3%B3rios" onClick={() => setMenuOpen(false)}>Notebooks</Link>
+          {getCategories().map((category) => (
+            <Link key={category} to={`/pesquisa?categoria=${encodeURIComponent(category)}`} onClick={() => setMenuOpen(false)}>{category}</Link>
+          ))}
+          <Link to="/montar-pc" onClick={() => setMenuOpen(false)}>Montar meu PC</Link>
+          <Link to="/pesquisa" onClick={() => setMenuOpen(false)}>Todos os produtos</Link>
           <Link to="/guias" onClick={() => setMenuOpen(false)}>Guias e comparativos</Link>
           <span className="nav-note"><span className="status-dot" /> Catálogo independente</span>
         </div>
