@@ -16,7 +16,7 @@ const pages: Record<string, InfoContent> = {
     lead: 'O Tecnoviario é um projeto independente criado para tornar a busca por tecnologia mais clara e ajudar pessoas a entenderem o que estão escolhendo.',
     sections: [
       { heading: 'Como trabalhamos', text: 'Organizamos produtos e informações por categorias e especificações. As informações de cada item devem ser conferidas com os fabricantes ou vendedores e atualizadas quando necessário.' },
-      { heading: 'Independência e transparência', text: 'O Tecnoviario não é afiliado, patrocinado nem representa oficialmente a Amazon ou qualquer fabricante. Se links comerciais forem adicionados futuramente, serão identificados com clareza e terão origem autorizada.' },
+      { heading: 'Independência e transparência', text: 'O Tecnoviario é um projeto independente, não representa oficialmente a Amazon, o Mercado Livre ou qualquer fabricante, e identifica links de afiliados com clareza.' },
       { heading: 'Conteúdo editorial', text: 'Os guias procuram explicar critérios e limitações de forma prática. Uma especificação publicada pelo fabricante não equivale a um teste independente nem a uma avaliação de uso.' },
     ],
   },
@@ -34,20 +34,20 @@ const pages: Record<string, InfoContent> = {
     description: 'Como o Tecnoviario trata dados neste site.',
     lead: 'Esta versão estática não exige cadastro, não processa pagamentos e não integra ferramentas de publicidade ou análise de audiência.',
     sections: [
-      { heading: 'Dados neste navegador', text: 'A pesquisa é executada localmente sobre o catálogo incluído no site. Esta versão não salva histórico, favoritos ou identificadores em armazenamento local.' },
+      { heading: 'Dados neste navegador', text: 'A pesquisa é executada localmente sobre o catálogo incluído no site. Esta versão não salva histórico, favoritos ou identificadores em armazenamento local. O estado dos favoritos existe apenas enquanto o cartão está aberto.' },
       { heading: 'Hospedagem e registros técnicos', text: 'O provedor de hospedagem pode processar registros técnicos de acesso para operar e proteger o serviço, de acordo com suas próprias políticas. Consulte a política do provedor escolhido.' },
-      { heading: 'Cookies e terceiros', text: 'O Tecnoviario não instala cookies próprios de publicidade ou análise nesta versão. Ao acessar futuramente um link externo, o tratamento de dados será regido pelo destino e suas políticas.' },
+      { heading: 'Cookies e terceiros', text: 'O Tecnoviario não instala cookies próprios de publicidade ou análise nesta versão. A fonte Manrope pode ser carregada pelo Google Fonts; esse pedido técnico pode ser processado pelo provedor. Ao acessar um link externo, o tratamento de dados será regido pelo destino e suas políticas.' },
       { heading: 'Alterações', text: 'Esta política deverá ser revisada quando forem adicionadas funcionalidades, ferramentas de análise, armazenamento local ou integrações comerciais.' },
     ],
   },
   '/afiliados': {
     title: 'Aviso de afiliados',
-    description: 'Transparência sobre links de afiliados e a natureza independente do Tecnoviario.',
-    lead: 'Como associado da Amazon, eu ganho com compras qualificadas.',
+    description: 'Transparência sobre ofertas e links de afiliados da Amazon e do Mercado Livre.',
+    lead: 'O Tecnoviario pode receber comissão por compras qualificadas feitas por links de afiliados da Amazon ou do Mercado Livre, sem custo adicional para você.',
     sections: [
-      { heading: 'Projeto independente', text: 'O Tecnoviario é um site independente e não é patrocinado, endossado ou operado pela Amazon. A menção ao programa não implica parceria institucional além da participação formal, caso configurada.' },
+      { heading: 'Projeto independente', text: 'O Tecnoviario é um projeto independente e não é patrocinado, endossado nem operado pela Amazon ou pelo Mercado Livre. A participação em programas de afiliados não implica parceria institucional.' },
       { heading: 'Links de afiliados', text: 'Alguns links de produtos podem ser links de afiliados. Se você comprar por meio deles, o Tecnoviario pode receber uma comissão, sem custo adicional para você.' },
-      { heading: 'Informações comerciais', text: 'Preço, disponibilidade e dados de produtos devem ter origem autorizada, ser atualizados de acordo com as regras do programa aplicável e ser confirmados na página da loja antes da compra.' },
+      { heading: 'Informações comerciais', text: 'Preço, disponibilidade e dados de produtos devem ter origem autorizada e ser confirmados na página da Amazon ou do Mercado Livre antes de comprar. Os preços podem mudar sem aviso.' },
     ],
   },
   '/termos': {
@@ -70,7 +70,7 @@ export function InfoPage() {
       <PageMeta title={page.title} description={page.description} />
       <div className="breadcrumb"><Link to="/">Início</Link><span>/</span><span>{page.title}</span></div>
       <header className="info-header"><span className="section-kicker">TECNOVIARIO</span><h1>{page.title}</h1><p>{page.lead}</p></header>
-      {pathname === '/afiliados' && <div className="info-highlight"><ShieldCheck size={20} /><strong>Como associado da Amazon, eu ganho com compras qualificadas.</strong></div>}
+      {pathname === '/afiliados' && <div className="info-highlight"><ShieldCheck size={20} /><strong>Links de afiliados da Amazon e do Mercado Livre podem gerar comissão, sem custo adicional para você.</strong></div>}
       {pathname === '/contato' && <div className="info-highlight"><Mail size={20} /><span>O responsável pelo projeto deve cadastrar um canal válido antes de divulgar o site ao público.</span></div>}
       <div className="info-sections">
         {page.sections.map((section) => <section key={section.heading}><h2>{section.heading}</h2><p>{section.text}</p></section>)}

@@ -128,6 +128,31 @@ function parsePrice(value) {
   return totalCents / 100
 }
 
+function detectStore(url) {
+  if (!url) return undefined
+  const hostName = new URL(url).hostname.toLowerCase()
+  if (['amazon.com.br', 'link.amazon', 'amzn.to'].includes(hostName) || hostName.endsWith('.amazon.com.br') || hostName === 'amazon.com' || hostName.endsWith('.amazon.com')) return 'amazon'
+  if (['meli.la', 'mercadolivre.com.br', 'mercadolibre.com'].includes(hostName) || hostName.endsWith('.mercadolivre.com.br') || hostName.endsWith('.mercadolibre.com')) return 'mercadolivre'
+  return undefined
+}
+
+function parsePriceHistory(value) {
+  if (typeof value !== 'string' || !value.trim()) return undefined
+  const points = []
+  for (const line of value.split(/\r?\n/)) {
+    const separator = line.indexOf(';')
+    if (separator < 1) rejectInput('Histórico inválido. Use uma linha por registro no formato data ISO; preço.')
+    const date = line.slice(0, separator).trim()
+    const timestamp = Date.parse(date)
+    if (!Number.isFinite(timestamp) || timestamp > Date.now()) rejectInput('Cada data do histórico precisa ser válida e não pode estar no futuro.')
+    const price = parsePrice(line.slice(separator + 1))
+    if (price === undefined) rejectInput('Informe um preço para cada ponto do histórico.')
+    points.push({ date: new Date(timestamp).toISOString(), price })
+  }
+  points.sort((left, right) => Date.parse(left.date) - Date.parse(right.date))
+  return points.length ? points : undefined
+}
+
 async function readCatalog() {
   const content = await readFile(catalogPath, 'utf8')
   const catalog = JSON.parse(content)
@@ -203,7 +228,9 @@ async function addProduct(productInput) {
   const brand = typeof productInput.brand === 'string' ? productInput.brand.trim() : ''
   const model = typeof productInput.model === 'string' ? productInput.model.trim() : ''
   const description = typeof productInput.description === 'string' ? productInput.description.trim() : ''
+  const editorialAssessment = typeof productInput.editorialAssessment === 'string' ? productInput.editorialAssessment.trim() : ''
   const affiliateUrl = typeof productInput.affiliateUrl === 'string' ? productInput.affiliateUrl.trim() : ''
+  const requestedStore = productInput.store === 'amazon' || productInput.store === 'mercadolivre' ? productInput.store : undefined
   const dataSource = typeof productInput.dataSource === 'string' ? productInput.dataSource.trim() : ''
   const compatibility = parseCompatibility(productInput)
 
@@ -224,6 +251,26 @@ async function addProduct(productInput) {
   }
 
   const price = parsePrice(productInput.price)
+  const originalPrice = parsePrice(productInput.originalPrice)
+  const detectedStore = affiliateUrl ? detectStore(affiliateUrl) : undefined
+  if (requestedStore && detectedStore && requestedStore !== detectedStore) {
+    rejectInput('A loja selecionada não corresponde ao domínio do link informado.')
+  }
+  const store = requestedStore || detectedStore
+  const rawLastCheckedAt = typeof productInput.lastCheckedAt === 'string' ? productInput.lastCheckedAt.trim() : ''
+  const parsedLastCheckedAt = rawLastCheckedAt ? Date.parse(rawLastCheckedAt) : Number.NaN
+  if (rawLastCheckedAt && (!Number.isFinite(parsedLastCheckedAt) || parsedLastCheckedAt > Date.now())) {
+    rejectInput('A data de verificação precisa ser válida e não pode estar no futuro.')
+  }
+  const lastCheckedAt = rawLastCheckedAt
+    ? new Date(parsedLastCheckedAt).toISOString()
+    : price !== undefined
+      ? new Date().toISOString()
+      : undefined
+  const dealTags = new Set(['menor-preco-30d', 'acabou-de-cair', 'em-alta', 'novo'])
+  const dealTag = dealTags.has(productInput.dealTag) ? productInput.dealTag : undefined
+  const priceHistory = parsePriceHistory(productInput.priceHistory)
+  const available = productInput.available === 'true' ? true : productInput.available === 'false' ? false : undefined
 
   const specifications = {}
   if (typeof productInput.specifications === 'string' && productInput.specifications.trim()) {
@@ -269,11 +316,18 @@ async function addProduct(productInput) {
     ...(brand ? { brand } : {}),
     ...(model ? { model } : {}),
     ...(description ? { description } : {}),
+    ...(editorialAssessment ? { editorialAssessment } : {}),
     ...(Object.keys(specifications).length ? { specifications } : {}),
     ...(Object.keys(compatibility).length ? { compatibility } : {}),
     ...(imageBuffer ? { image: '' } : {}),
     ...(affiliateUrl ? { affiliateUrl } : {}),
-    ...(price !== undefined ? { price, priceUpdatedAt: new Date().toISOString() } : {}),
+    ...(price !== undefined ? { price, priceUpdatedAt: lastCheckedAt } : {}),
+    ...(originalPrice !== undefined ? { originalPrice } : {}),
+    ...(store ? { store } : {}),
+    ...(lastCheckedAt ? { lastCheckedAt } : {}),
+    ...(priceHistory ? { priceHistory } : {}),
+    ...(available !== undefined ? { available } : {}),
+    ...(dealTag ? { dealTag } : {}),
     dataSource: dataSource || 'Informado manualmente pelo editor',
   }
 

@@ -91,6 +91,46 @@
             <input name="affiliateUrl" type="url" placeholder="https://...">
           </label>
         </div>
+        <div class="grid">
+          <label>Loja de origem
+            <select name="store">
+              <option value="">Detectar pelo link ou informar depois</option>
+              <option value="amazon">Amazon</option>
+              <option value="mercadolivre">Mercado Livre</option>
+            </select>
+          </label>
+          <label>Disponibilidade confirmada
+            <select name="available">
+              <option value="">Ainda não confirmado</option>
+              <option value="true">Disponível</option>
+              <option value="false">Indisponível</option>
+            </select>
+          </label>
+        </div>
+        <div class="grid">
+          <label>Preço anterior (opcional)
+            <input name="originalPrice" type="text" inputmode="decimal" autocomplete="off" placeholder="Somente se confirmado">
+          </label>
+          <label>Verificado em (opcional)
+            <input name="lastCheckedAt" type="datetime-local">
+          </label>
+        </div>
+        <label>Destaque confirmado (opcional)
+          <select name="dealTag">
+            <option value="">Sem destaque</option>
+            <option value="menor-preco-30d">Menor preço em 30 dias</option>
+            <option value="acabou-de-cair">Acabou de cair</option>
+            <option value="em-alta">Em alta esta semana</option>
+            <option value="novo">Novo</option>
+          </select>
+        </label>
+        <label>Vale a pena? Nota editorial original (opcional)
+          <textarea name="editorialAssessment" maxlength="1200" placeholder="Escreva uma avaliação original, baseada em informações conferidas."></textarea>
+        </label>
+        <label>Histórico de preços (opcional)
+          <textarea name="priceHistory" placeholder="Uma linha por ponto: data ISO; preço&#10;Ex.: 2026-10-15T10:00:00-03:00;599,90"></textarea>
+        </label>
+        <p class="hint">Use apenas datas e preços verificados. O desconto percentual é calculado pelo site e nunca deve ser informado manualmente.</p>
         <p class="hint" id="price-hint">Digite como no Brasil, por exemplo <strong>5.939,90</strong>. Também aceita 5939,90 ou 5,939.90.</p>
         <label>Especificações
           <textarea name="specifications" placeholder="Escreva uma especificação por linha&#10;Capacidade: 1 TB&#10;Interface: NVMe&#10;Também pode colar uma lista simples, sem dois-pontos"></textarea>
@@ -142,7 +182,7 @@
             </select>
           </label>
         </details>
-        <p class="hint">Se informar o preço, a data de hoje é gravada automaticamente. Preços cadastrados há mais de 24 horas não aparecem no site.</p>
+        <p class="hint">Se informar o preço e deixar a data de verificação em branco, o momento de salvar será usado. Preços sem atualização em 24 horas não aparecem como oferta ativa.</p>
         <label>Fonte das informações
           <input name="dataSource" maxlength="200" placeholder="Ex.: Página oficial do fabricante">
         </label>

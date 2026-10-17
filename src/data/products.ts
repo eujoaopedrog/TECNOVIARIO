@@ -1,5 +1,5 @@
 import catalog from './products.json'
-import type { Product, ProductCompatibility } from '../types/product'
+import type { DealTag, Product, ProductCompatibility, ProductStore, PriceHistoryPoint } from '../types/product'
 
 interface CatalogEntry {
   id?: string
@@ -14,8 +14,16 @@ interface CatalogEntry {
   dataSource?: string
   image?: string
   price?: number
+  originalPrice?: number
+  discountPercent?: number
   priceUpdatedAt?: string
   affiliateUrl?: string
+  store?: ProductStore
+  lastCheckedAt?: string
+  priceHistory?: PriceHistoryPoint[]
+  available?: boolean
+  dealTag?: DealTag
+  editorialAssessment?: string
   compatibility?: ProductCompatibility
 }
 
@@ -56,6 +64,37 @@ function normalizeCompatibility(value: ProductCompatibility | undefined): Produc
   return Object.keys(normalized).length ? normalized : undefined
 }
 
+function detectStore(affiliateUrl: string | undefined): ProductStore | undefined {
+  if (!affiliateUrl) return undefined
+  let hostname: string
+  try {
+    hostname = new URL(affiliateUrl).hostname.toLocaleLowerCase('en-US')
+  } catch {
+    return undefined
+  }
+  if (hostname === 'link.amazon' || hostname === 'amzn.to' || hostname === 'amazon.com' || hostname.endsWith('.amazon.com') || hostname === 'amazon.com.br' || hostname.endsWith('.amazon.com.br')) return 'amazon'
+  if (hostname === 'meli.la' || hostname === 'mercadolivre.com.br' || hostname.endsWith('.mercadolivre.com.br') || hostname === 'mercadolibre.com' || hostname.endsWith('.mercadolibre.com')) return 'mercadolivre'
+  return undefined
+}
+
+function normalizePriceHistory(value: PriceHistoryPoint[] | undefined): PriceHistoryPoint[] | undefined {
+  if (!Array.isArray(value)) return undefined
+  const points = value.filter((point) =>
+    point
+    && typeof point.date === 'string'
+    && Number.isFinite(Date.parse(point.date))
+    && typeof point.price === 'number'
+    && Number.isFinite(point.price)
+    && point.price >= 0,
+  ).sort((left, right) => Date.parse(left.date) - Date.parse(right.date))
+  return points.length ? points : undefined
+}
+
+function calculateDiscountPercent(price: number | undefined, originalPrice: number | undefined): number | undefined {
+  if (price === undefined || originalPrice === undefined || originalPrice <= price || originalPrice <= 0) return undefined
+  return Math.round((1 - price / originalPrice) * 100)
+}
+
 export const products: Product[] = catalogEntries.map((entry, index) => {
   if (!entry.name.trim() || !entry.category.trim()) {
     throw new Error(`Product catalog entry ${index + 1} must include a name and category.`)
@@ -74,6 +113,22 @@ export const products: Product[] = catalogEntries.map((entry, index) => {
   seenIds.add(id)
   seenSlugs.add(slug)
   const compatibility = normalizeCompatibility(entry.compatibility)
+  const affiliateUrl = entry.affiliateUrl?.trim()
+  const detectedStore = detectStore(affiliateUrl)
+  if (detectedStore && entry.store && detectedStore !== entry.store) {
+    throw new Error(`Store metadata does not match the affiliate link for "${entry.name}".`)
+  }
+  const store = detectedStore ?? (entry.store === 'amazon' || entry.store === 'mercadolivre' ? entry.store : undefined)
+  const priceHistory = normalizePriceHistory(entry.priceHistory)
+  const price = typeof entry.price === 'number' && Number.isFinite(entry.price) && entry.price >= 0 ? entry.price : undefined
+  const originalPrice = typeof entry.originalPrice === 'number' && Number.isFinite(entry.originalPrice) && entry.originalPrice > 0
+    ? entry.originalPrice
+    : undefined
+  const lastCheckedAt = entry.lastCheckedAt && Number.isFinite(Date.parse(entry.lastCheckedAt))
+    ? entry.lastCheckedAt
+    : entry.priceUpdatedAt && Number.isFinite(Date.parse(entry.priceUpdatedAt))
+      ? entry.priceUpdatedAt
+      : undefined
 
   return {
     id,
@@ -91,9 +146,17 @@ export const products: Product[] = catalogEntries.map((entry, index) => {
     keywords: entry.keywords ?? [],
     dataSource: entry.dataSource?.trim() || 'Informado manualmente pelo editor',
     ...(entry.image ? { image: entry.image } : {}),
-    ...(typeof entry.price === 'number' ? { price: entry.price } : {}),
+    ...(price !== undefined ? { price } : {}),
+    ...(originalPrice !== undefined ? { originalPrice } : {}),
+    ...(calculateDiscountPercent(price, originalPrice) !== undefined ? { discountPercent: calculateDiscountPercent(price, originalPrice) } : {}),
     ...(entry.priceUpdatedAt ? { priceUpdatedAt: entry.priceUpdatedAt } : {}),
-    ...(entry.affiliateUrl ? { affiliateUrl: entry.affiliateUrl } : {}),
+    ...(affiliateUrl ? { affiliateUrl } : {}),
+    ...(store ? { store } : {}),
+    ...(lastCheckedAt ? { lastCheckedAt } : {}),
+    ...(priceHistory ? { priceHistory } : {}),
+    ...(typeof entry.available === 'boolean' ? { available: entry.available } : {}),
+    ...(entry.dealTag && ['menor-preco-30d', 'acabou-de-cair', 'em-alta', 'novo'].includes(entry.dealTag) ? { dealTag: entry.dealTag } : {}),
+    ...(typeof entry.editorialAssessment === 'string' && entry.editorialAssessment.trim() ? { editorialAssessment: entry.editorialAssessment.trim() } : {}),
     ...(compatibility ? { compatibility } : {}),
   }
 })

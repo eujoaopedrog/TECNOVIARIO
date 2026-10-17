@@ -17,6 +17,7 @@ export function SearchBox({ large = false, initialQuery = '', onSearch }: Search
   const [open, setOpen] = useState(false)
   const navigate = useNavigate()
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const selectedQuery = useRef<string>()
   const wrapper = useRef<HTMLFormElement>(null)
   const listId = `${useId()}-suggestions`
 
@@ -24,6 +25,12 @@ export function SearchBox({ large = false, initialQuery = '', onSearch }: Search
 
   useEffect(() => {
     if (timer.current) clearTimeout(timer.current)
+    if (selectedQuery.current === query) {
+      selectedQuery.current = undefined
+      setSuggestions([])
+      setOpen(false)
+      return
+    }
     const trimmed = query.trim()
     if (!trimmed) {
       setSuggestions([])
@@ -51,6 +58,7 @@ export function SearchBox({ large = false, initialQuery = '', onSearch }: Search
     event?.preventDefault()
     const value = query.trim()
     setOpen(false)
+    setActiveIndex(-1)
     if (onSearch) onSearch(value)
     else navigate(`/pesquisa${value ? `?q=${encodeURIComponent(value)}` : ''}`)
   }
@@ -68,6 +76,7 @@ export function SearchBox({ large = false, initialQuery = '', onSearch }: Search
       setActiveIndex((index) => Math.max(index - 1, -1))
     } else if (event.key === 'Escape') {
       setOpen(false)
+      setActiveIndex(-1)
     } else if (event.key === 'Enter' && activeIndex >= 0) {
       event.preventDefault()
       choose(suggestions[activeIndex])
@@ -75,8 +84,10 @@ export function SearchBox({ large = false, initialQuery = '', onSearch }: Search
   }
 
   function choose(product: Product) {
+    if (query !== product.name) selectedQuery.current = product.name
     setQuery(product.name)
     setOpen(false)
+    setActiveIndex(-1)
     navigate(`/produto/${product.slug}`)
   }
 
@@ -87,7 +98,7 @@ export function SearchBox({ large = false, initialQuery = '', onSearch }: Search
         aria-label="Pesquisar produtos"
         aria-autocomplete="list"
         aria-controls={listId}
-        aria-activedescendant={activeIndex >= 0 ? `product-suggestion-${activeIndex}` : undefined}
+        aria-activedescendant={activeIndex >= 0 ? `${listId}-option-${activeIndex}` : undefined}
         aria-expanded={open && suggestions.length > 0}
         autoComplete="off"
         onChange={(event) => {
@@ -101,7 +112,10 @@ export function SearchBox({ large = false, initialQuery = '', onSearch }: Search
         value={query}
       />
       {query && (
-        <button className="search-clear" type="button" aria-label="Limpar pesquisa" onClick={() => setQuery('')}>
+        <button className="search-clear" type="button" aria-label="Limpar pesquisa" onClick={() => {
+          setQuery('')
+          setActiveIndex(-1)
+        }}>
           <X size={17} />
         </button>
       )}

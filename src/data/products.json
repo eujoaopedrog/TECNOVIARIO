@@ -133,12 +133,273 @@
     },
     "compatibility": {
       "socket": "AM4",
-      "supportedMemoryTypes": ["DDR4"]
+      "supportedMemoryTypes": [
+        "DDR4"
+      ]
     },
     "image": "/products/images/placa-mae-am4-usb-3-1-type-c-displayport-hdmi-asrock-b450m-steel-legend.jpg",
     "affiliateUrl": "https://link.amazon/B0fKGpti3",
     "price": 573.33,
     "priceUpdatedAt": "2026-10-17T00:17:13.817Z",
+    "dataSource": "Informado manualmente pelo editor"
+  },
+  {
+    "name": "Notebook Gamer Alienware 15, 15,3\" WUXGA 165Hz, Intel Core 5 210H, 8GB DDR5, 512GB SSD, NVIDIA GeForce RTX 3050 6GB, Windows 11 – DA15-C5210",
+    "category": "Notebooks e acessórios",
+    "brand": "DELL",
+    "model": "Alienware 15",
+    "description": "Notebook Gamer Alienware 15\nA essência Alienware em performance e versatilidade\nO Alienware 15 oferece alto desempenho em um design durável e elegante. Ele oferece desempenho confiável para jogos, trabalho e tarefas diárias. Com processadores Intel Core (série 2) e placas gráficas até NVIDIA GeForce RTX4050, o Alienware 15 é a porta de entrada para a qualidade e versatilidade da Alienware.\n\nDesign funcional: Um design confortável e robusto que prioriza os recursos essenciais de que você precisa",
+    "specifications": {
+      "MULTITAREFA ÁGIL": "Memória RAM DDR5 de 8 GB a 5600MT/s garante fluidez em jogos e aplicativos simultâneos, enquanto o SSD PCIe NVMe M.2 de 512 GB oferece inicialização ultrarrápida e amplo espaço para sua biblioteca de games; expansível até 32 GB para upgrades futuros.",
+      "DESEMPENHO GAMER": "Intel Core 5 210H de 8 núcleos com cache de 12 MB e turbo até 4,8 GHz entrega potência para rodar jogos exigentes, streamings e multitarefa pesada com eficiência e estabilidade.",
+      "GRÁFICOS DE ALTO NÍVEL": "NVIDIA GeForce RTX 3050 com 6 GB GDDR6 dedicada oferece ray tracing e DLSS para visuais realistas, frames suaves e desempenho consistente nos principais títulos de jogos.",
+      "IMERSÃO VISUAL": "Tela WUXGA de 15,3 polegadas com proporção 16:10 (1920x1200), taxa de atualização de 165 Hz, brilho de 300 nits e 62,5% sRGB proporciona imagens fluidas, cores vivas e amplo campo de visão para gaming e criação de conteúdo.",
+      "ASSISTÊNCIA TÉCNICA": "Conta com 1 ano de garantia básica on-site após diagnóstico remoto, com suporte exclusivo de hardware Dell, oferecendo atendimento técnico no local e tranquilidade durante o período de cobertura."
+    },
+    "image": "/products/images/notebook-gamer-alienware-15-15-3-wuxga-165hz-intel-core-5-210h-8gb-ddr5-512gb-ssd-nvidia-geforce-rtx-3050-6gb-windows-11-da15-c5210.jpg",
+    "affiliateUrl": "https://link.amazon/B0bMdweHG",
+    "price": 5939.9,
+    "priceUpdatedAt": "2026-10-17T01:23:23.587Z",
+    "dataSource": "Informado manualmente pelo editor"
+  },
+  {
+    "name": "MEMÓRIA KINGSTON FURY BEAST DIMM DDR4 8GB 3200 MHZ KF432C16BB/8 1,35V 1Rx* 288 pinos Desktop Gamer",
+    "category": "Memórias RAM",
+    "brand": "Kingston",
+    "model": "KF432C16BB/8",
+    "description": "MEMORIA 8GB 3200U DDR4 FURY BEAST BLACK KINGSTON KF432C16BB/8",
+    "specifications": {
+      "Detalhe 1": "Tecnologia de memória RAM\tDDR4",
+      "Detalhe 2": "Velocidade da memória\t3200 MHz",
+      "Detalhe 3": "Dispositivos compatíveis\tComputador",
+      "Detalhe 4": "Características especiais\tPara Uso em Desktop",
+      "Detalhe 5": "Voltagem\t1,35 Volts",
+      "Detalhe 6": "Latência CAS\t16 Ciclos",
+      "Detalhe 7": "Fator de forma\tDIMM",
+      "Detalhe 8": "Taxa de transferência de dados\t12 Gigabits Per Second",
+      "Detalhe 9": "Número de pinos\t288",
+      "Detalhe 10": "Nome da marca\tKingston",
+      "Detalhe 11": "Nome do Modelo\tKF432C16BB/8",
+      "Detalhe 12": "UPC\t740617319910",
+      "Detalhe 13": "Quantidade de itens\t1",
+      "Detalhe 14": "Fabricante\tKingston",
+      "Detalhe 15": "Contagem de unidades\t1 Count",
+      "Detalhe 16": "Número de identificação de comércio internacional\t00740617319910",
+      "Detalhe 17": "Peso do item\t36 g",
+      "Detalhe 18": "Número do modelo\tKF432C16BB/8",
+      "Detalhe 19": "Número da peça\tHX432C16FB3/8",
+      "Detalhe 20": "Descrição da garantia\tVitalícia"
+    },
+    "compatibility": {
+      "integratedGraphics": true
+    },
+    "image": "/products/images/memoria-kingston-fury-beast-dimm-ddr4-8gb-3200-mhz-kf432c16bb-8-1-35v-1rx-288-pinos-desktop-gamer.jpg",
+    "affiliateUrl": "https://link.amazon/B06g7yrFh",
+    "price": 398.71,
+    "priceUpdatedAt": "2026-10-17T01:25:53.277Z",
+    "dataSource": "Informado manualmente pelo editor"
+  },
+  {
+    "name": "Memória Notebook Crucial 8GB DDR4 3200 Mhz",
+    "category": "Memórias RAM",
+    "brand": "Crucial",
+    "description": "MEMORIA 8GB 3200 DDR4 SODIMM P/ NOTEBOOK CLASSIC GREEN CRUCIAL CT8G4SFRA32A",
+    "specifications": {
+      "Tecnologia": "DDR4 - Densidade: 8GB - Tipo de módulo: SODIMM - DIMM Type: Unbuffered - Tensão: 1.2V - Quantidade de módulos: 1 Velocidade e temporização - Velocidade: DDR4-3200 - Latência CAS: 22 - Tempos estendidos: 22-22-22",
+      "Detalhe 1": "Velocidade de 3200 MHz com latência CAS de 22 e tempos estendidos de 22-22-22 para desempenho otimizado",
+      "Detalhe 2": "Compatível com laptops, opera com tensão de 1.2V para eficiência energética"
+    },
+    "image": "/products/images/memoria-notebook-crucial-8gb-ddr4-3200-mhz.jpg",
+    "affiliateUrl": "https://link.amazon/B08cnF3H5",
+    "price": 394.24,
+    "priceUpdatedAt": "2026-10-17T01:27:40.028Z",
+    "dataSource": "Informado manualmente pelo editor"
+  },
+  {
+    "name": "SSD 256gb interno PC e notebook sata3 armazenamento disco",
+    "category": "SSDs e armazenamento",
+    "brand": "LKL",
+    "model": "R500",
+    "description": "Este SSD interno de 256 GB foi pensado para quem busca mais agilidade no uso diário do computador ou do notebook. A interface SATA III favorece a troca de um disco rígido mecânico por uma solução mais rápida e silenciosa.\n\nCom leitura de até 350 MB/s e escrita informada de 350 MB/s, ele ajuda a reduzir o tempo de abertura do sistema, dos arquivos e das aplicações. Isso deixa a rotina mais fluida em tarefas de trabalho, estudo e também em jogos.\n\nSeu formato compacto, com 6,98 cm de largura, 10 c",
+    "specifications": {
+      "Detalhe 1": "Velocidade máxima de leitura de 500 MB/s que diminui o tempo de carregamento do sistema operacional e de aplicações.",
+      "Detalhe 2": "Velocidade de gravação de 350 MB/s que agiliza a transferência de arquivos e a execução de tarefas em computadores.",
+      "Detalhe 3": "Dimensões de 6,98 cm de largura por 10 cm de profundidade e 0,7 cm de altura que viabilizam a instalação em notebooks.",
+      "Detalhe 4": "Peso de 45 g que possibilita a integração em dispositivos mantendo o volume interno reduzido do equipamento.",
+      "Detalhe 5": "Sistema de segurança de dados integrado que protege as informações armazenadas em sistemas Windows 10 Pro ou Linux."
+    },
+    "image": "/products/images/ssd-256gb-interno-pc-e-notebook-sata3-armazenamento-disco.webp",
+    "affiliateUrl": "https://meli.la/2PNnH5G",
+    "price": 289.85,
+    "priceUpdatedAt": "2026-10-17T01:31:01.128Z",
+    "dataSource": "Informado manualmente pelo editor"
+  },
+  {
+    "name": "Processador Para Desktop Intel® Core I7-3770 3.40 Ghz",
+    "category": "Processadores",
+    "brand": "Intel",
+    "model": "I7-3770",
+    "description": "O processador Intel® Core™ i7 é uma unidade de processamento central projetada para computadores de mesa, baseada na microarquitetura que utiliza o soquete FCLGA1155. Este componente integra quatro núcleos de processamento físico e suporta oito threads simultâneas, otimizando o fluxo de trabalho multitarefa. A frequência base de operação é de 3.40 GHz, podendo alcançar uma frequência máxima de 3.90 GHz através da tecnologia de aceleração dinâmica Intel® Turbo Boost 2.0.\n\nO dispositivo dispõe de",
+    "specifications": {
+      "Tipos de memória RAM suportadas": "DDR3",
+      "Frequência máxima de relógio": "3.9 GHz",
+      "Quantidade de núcleos de CPU": "4",
+      "Soquetes compatíveis": "FCLGA1155"
+    },
+    "image": "/products/images/processador-para-desktop-intel-core-i7-3770-3-40-ghz.webp",
+    "affiliateUrl": "https://meli.la/1o7MA4G",
+    "price": 359.72,
+    "priceUpdatedAt": "2026-10-17T01:32:50.083Z",
+    "dataSource": "Informado manualmente pelo editor"
+  },
+  {
+    "name": "Fonte Gamer ATX Fortrek Crusader 500W Bivolt Cooler 120mm",
+    "category": "Fontes e gabinetes",
+    "brand": "ATX",
+    "model": "CRUSADER",
+    "description": "A Fonte ATX Fortrek Crusader é a escolha perfeita para os que buscam confiabilidade e desempenho excepcional em seus sistemas. Com potência nominal de 500W e construção meticulosa utilizando componentes de alta qualidade, essa fonte oferece energia estável e eficiente.",
+    "specifications": {
+      "Modelo": "Crusader 500W",
+      "Dimensões": "140 x 150 x 86mm",
+      "Potência": "500W Nominal",
+      "Conectores": "Placa Mãe 20+4 pinos (450mm) / P8 (4+4 pinos) (550mm) / Pinos (6+2) (550mm) / Pinos Pata + Sata + Sata (550mm+150+150) / Pinos Pata + Sata + Sata (550mm+150+150)",
+      "Tensão de Entrada": "115/230V (Manual)",
+      "Frequência": "50Hz-60Hz",
+      "Ventiladores": "12cm / 120mm"
+    },
+    "image": "/products/images/fonte-gamer-atx-fortrek-crusader-500w-bivolt-cooler-120mm.webp",
+    "affiliateUrl": "https://meli.la/15y9CX6",
+    "price": 110.65,
+    "priceUpdatedAt": "2026-10-17T01:34:31.555Z",
+    "dataSource": "Informado manualmente pelo editor"
+  },
+  {
+    "name": "Placa de Vídeo Nvidia GeForce GT 210 Revenger 1GB DDR3 HDMI VGA",
+    "category": "Placas de vídeo",
+    "brand": "Nvidia",
+    "model": "GT 210",
+    "description": "A Placa de Vídeo Nvidia Revenger GT 210 1GB 64bit DDR3 é a escolha ideal para quem busca um desempenho gráfico confiável em tarefas do dia a dia. Com 1 GB de memória dedicada e uma interface PCI-Express 2.0, esta placa é perfeita para usuários que desejam melhorar a experiência visual em jogos leves e aplicações multimídia.\n\nA tecnologia DDR3 proporciona uma conectividade de 600Hz, garantindo uma performance fluida e eficiente. Seu bus de memória de 64 bits permite um acesso rápido aos dados, to",
+    "specifications": {
+      "Tamanho da memória": "1 GB.",
+      "Detalhe 1": "Placa de vídeo com interface PCI-Express 2.0 para alta compatibilidade.",
+      "Detalhe 2": "Processador gráfico com tecnologia de ponta para desempenho superior.",
+      "Detalhe 3": "Conectividade de 600Hz para imagens mais nítidas e fluidas."
+    },
+    "image": "/products/images/placa-de-video-nvidia-geforce-gt-210-revenger-1gb-ddr3-hdmi-vga.webp",
+    "affiliateUrl": "https://meli.la/1Eyi6oj",
+    "price": 129.99,
+    "priceUpdatedAt": "2026-10-17T01:36:08.715Z",
+    "dataSource": "Informado manualmente pelo editor"
+  },
+  {
+    "name": "Placa De Video Delta Gtx 550 Ti 2gb 128 Bits Gddr5",
+    "category": "Placas de vídeo",
+    "brand": "Delta",
+    "model": "550 Ti",
+    "description": "Placa de Vídeo GDDR5 2GB PCle 2.0 128bit 625MHz\n\nDesenvolvida para oferecer suporte gráfico do básico ao moderado para setups, a Placa de Vídeo GDDR5 2GB PCle 2.0 128bit 625MHz pode ser utilizada em aplicações de edição, visualização de vídeos em HD e outras funções cotidianas para softwares de produtividade.\n\nCom tamanho compacto, equilibra desempenho e eficiência para computadores de entrada ou intermediários, possibilitando uma eficiência energética que ocupa pouco espaço no gabinete.",
+    "specifications": {
+      "Tipo de memória gráfica": "GDDR5.",
+      "Tamanho da memória": "2.048 GB.",
+      "Detalhe 1": "Memória gráfica GDDR5 para melhor resolução e nitidez nas imagens.",
+      "Detalhe 2": "Interface PCIe 2.0.",
+      "Detalhe 3": "Bus de memória de 128 bits."
+    },
+    "image": "/products/images/placa-de-video-delta-gtx-550-ti-2gb-128-bits-gddr5.webp",
+    "affiliateUrl": "https://meli.la/1iMMcMG",
+    "price": 331.45,
+    "priceUpdatedAt": "2026-10-17T01:37:20.423Z",
+    "dataSource": "Informado manualmente pelo editor"
+  },
+  {
+    "name": "Placa Mãe Bluecase BMBH61-G22HG-ITX Lga 1155 2 Hdmi Oem",
+    "category": "Placas-mãe",
+    "brand": "Bluecase",
+    "model": "BMBH61",
+    "description": "A Bluecase BMBH61-G22HG-ITX foi desenvolvida para montagem de computadores desktop compactos, unindo formato ITX, chipset H61 e socket 1155 em uma solução prática para uso diário. Aceita processadores das 2ª e 3ª gerações Intel e traz dois slots DIMM, com capacidade máxima de 16 GB em dual channel e frequência de 1600 MHz. O suporte a PCIe x16 2.0 amplia as possibilidades de expansão, enquanto o acabamento com dissipador contribui para maior estabilidade no funcionamento.",
+    "specifications": {
+      "Detalhe 1": "Suporta processadores Intel de 2ª e 3ª geração no socket 1155 para montagem de sistemas em formato ITX de 17 x 17 cm.",
+      "Detalhe 2": "Dois slots DIMM com arquitetura Dual Channel permitem instalar até 16 GB de memória RAM DDR3 a 1600 MHz.",
+      "Detalhe 3": "A saída HDMI integrada suporta resolução de vídeo até 4K para transmissão de imagens em monitores de alta definição.",
+      "Detalhe 4": "O slot PCIe 2.0 x16 permite a expansão do sistema com placas de vídeo dedicadas ou outros dispositivos de hardware.",
+      "Detalhe 5": "A porta LAN Gigabit RJ45 integrada viabiliza a transferência de dados em redes locais com velocidade de até 1 Gbps."
+    },
+    "image": "/products/images/placa-mae-bluecase-bmbh61-g22hg-itx-lga-1155-2-hdmi-oem.webp",
+    "affiliateUrl": "https://meli.la/18z5qXg",
+    "price": 150.59,
+    "priceUpdatedAt": "2026-10-17T01:39:36.557Z",
+    "dataSource": "Informado manualmente pelo editor"
+  },
+  {
+    "name": "Gabinete Gamer Kalkan Midgard Preto Micro-atx Aquário Preto",
+    "category": "Fontes e gabinetes",
+    "brand": "Kalkan",
+    "model": "Midgard",
+    "description": "Gabinete estilo aquário compacto sem sacrificar funcionalidades\n- Painéis frontal e lateral em vidro temperado proporcionando uma vista quase ininterrupta dos componentes internos\n- Filtro de poeira magnético integrado no topo do gabinete\n- Conectividade USB 3.0 de alta velocidade integrada no painel frontal",
+    "specifications": {
+      "Classe de tamanho": "Aquário Micro-ATX",
+      "Materiais": "Aço, vidro temperado",
+      "Janela lateral": "Vidro temperado",
+      "Cor": "Preto",
+      "Suporte para tamanho de placa mãe": "Micro-ATX e Mini-ITX",
+      "Slots de expansão PCI": "4 Horizontais",
+      "Baia de discos": "2x 2.5\" + 2x 3.5\" ou 3x 2.5” + 1x 3.5”",
+      "Conexões do painel frontal": "1x USB 3.0, 2x USB 2.0, 1x 3.5mm fone e microfone combo",
+      "Detalhe 1": "Suporte para fans:",
+      "Topo": "Até 240 mm ou até 280 mm",
+      "Inferior": "2x 120 mm",
+      "Traseira": "1x 120 mm",
+      "Lateral": "2x 120 mm",
+      "Detalhe 2": "Suporte para Watercoolers:"
+    },
+    "image": "/products/images/gabinete-gamer-kalkan-midgard-preto-micro-atx-aquario-preto.webp",
+    "affiliateUrl": "https://meli.la/1mDfYnj",
+    "price": 185.9,
+    "priceUpdatedAt": "2026-10-17T02:05:11.315Z",
+    "dataSource": "Informado manualmente pelo editor"
+  },
+  {
+    "name": "Cooler Processador Intel LGA 775/1155/1150/1156 2200RPM 45CFM",
+    "category": "Cooler",
+    "brand": "Intel",
+    "model": "LGA 775/1155/1150/1156",
+    "description": "Compatível com todas as gerações de processadores das linhas:\n- LGA 1156 Celeron, Pentium e 1ª Geração dos processadores Core™ i3,i5 e i7\n- LGA 1155 Celeron, Pentium e 2ª e 3ª Geração dos processadores Core™ i3,i5 e i7\n- LGA 1150 Celeron, Pentium e 4ª Geração dos processadores Core™ i3,i5 e i7\n- LGA 1151 Celeron, Pentium e 6ª Geração dos processadores Core™ i3,i5 e i7\n- LGA 1151 Celeron, Pentium e 7ª Geração dos processadores Core™ i3,i5 e i7",
+    "specifications": {
+      "Detalhe 1": "-Cooler Box Intel",
+      "Detalhe 2": "Conector de 4 pinos",
+      "Montagem": "Sem suporte inferior, não é preciso retirar a placa-mãe do gabinete",
+      "Dissipador": "Inteiro em alumínio",
+      "Dimensões e Peso": "Ventilador: 90 x 90 x 25mm Completo 90 x 90 x 65 mm 120 gramas",
+      "Rotação": "2.200 RPM PWM ± 10%",
+      "Fluxo de Ar": "45 CFM ± 10%",
+      "Ruído": "26 Dba",
+      "Tipo de Rolamento": "Sleeve",
+      "Voltagem": "12 VDC",
+      "Detalhe 3": "Pasta térmica original Intel"
+    },
+    "affiliateUrl": "https://meli.la/1NEuCb6",
+    "price": 21.02,
+    "priceUpdatedAt": "2026-10-17T02:07:14.149Z",
+    "dataSource": "Informado manualmente pelo editor"
+  },
+  {
+    "name": "Processador Intel Xeon E5-2680 V4 14 Núcleos 3.3GHz Socket LGA2011-3",
+    "category": "Processadores",
+    "brand": "Intel",
+    "model": "E5-2680 V4",
+    "description": "O Intel Xeon E5-2680 V4 é um processador pensado para servidores e tarefas que pedem resposta estável em uso contínuo. Com 14 núcleos e 28 threads, ele oferece boa capacidade de paralelismo para ambientes com múltiplas demandas ao mesmo tempo.",
+    "specifications": {
+      "Modelo": "E5-2680 V4.",
+      "Detalhe 1": "Práticos para ambientes de produtividade que requerem trabalhar muitas horas sem descanso.",
+      "Detalhe 2": "Memória cache de 35 MB, rápida e volátil.",
+      "Detalhe 3": "Suporta memória RAM DDR4.",
+      "Detalhe 4": "Possui Hyper-Threading que favorece a execução de programas de maneira simultânea, ao dividir o processador físico em dois processadores lógicos.",
+      "Soquetes compatíveis": "FCLGA2011-3.",
+      "Detalhe 5": "TDP 120 W."
+    },
+    "image": "/products/images/processador-intel-xeon-e5-2680-v4-14-nucleos-3-3ghz-socket-lga2011-3.webp",
+    "affiliateUrl": "https://meli.la/2ByfyZA",
+    "price": 95,
+    "priceUpdatedAt": "2026-10-17T02:10:26.827Z",
     "dataSource": "Informado manualmente pelo editor"
   }
 ]

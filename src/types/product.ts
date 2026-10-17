@@ -11,6 +11,14 @@ export interface ProductCompatibility {
   integratedGraphics?: boolean
 }
 
+export type ProductStore = 'amazon' | 'mercadolivre'
+export type DealTag = 'menor-preco-30d' | 'acabou-de-cair' | 'em-alta' | 'novo'
+
+export interface PriceHistoryPoint {
+  date: string
+  price: number
+}
+
 export interface Product {
   id: string
   slug: string
@@ -24,8 +32,16 @@ export interface Product {
   dataSource: string
   image?: string
   price?: number
+  originalPrice?: number
+  discountPercent?: number
   priceUpdatedAt?: string
   affiliateUrl?: string
+  store?: ProductStore
+  lastCheckedAt?: string
+  priceHistory?: PriceHistoryPoint[]
+  available?: boolean
+  dealTag?: DealTag
+  editorialAssessment?: string
   compatibility?: ProductCompatibility
 }
 

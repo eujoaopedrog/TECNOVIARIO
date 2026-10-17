@@ -6,6 +6,7 @@ import { GuidesPage } from './pages/GuidesPage'
 import { HomePage } from './pages/HomePage'
 import { InfoPage } from './pages/InfoPage'
 import { NotFoundPage } from './pages/NotFoundPage'
+import { OffersPage } from './pages/OffersPage'
 import { ProductPage } from './pages/ProductPage'
 import { PcBuilderPage } from './pages/PcBuilderPage'
 import { SearchPage } from './pages/SearchPage'
@@ -33,6 +34,7 @@ export default function App() {
         <div id="main-content">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/ofertas" element={<OffersPage />} />
             <Route path="/pesquisa" element={<SearchPage />} />
             <Route path="/produto/:slug" element={<ProductPage />} />
             <Route path="/montar-pc" element={<PcBuilderPage />} />

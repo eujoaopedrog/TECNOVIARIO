@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { ArrowRight, Check, CircleAlert, CircleHelp, ExternalLink, RotateCcw, ShoppingCart, Wrench } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { PageMeta } from '../components/PageMeta'
+import { storeName } from '../components/StoreBadge'
 import {
   checkPcBuild,
   getCompatibilityStatusLabel,
@@ -43,6 +44,7 @@ function statusIcon(status: 'compatible' | 'incompatible' | 'unknown') {
 
 export function PcBuilderPage() {
   const [selection, setSelection] = useState<PcBuildSelection>({})
+  const [activeMobileStep, setActiveMobileStep] = useState(0)
   const selectedEntries = useMemo(
     () => pcBuildSlots.flatMap((slot) => {
       const product = selection[slot.id]
@@ -68,6 +70,7 @@ export function PcBuilderPage() {
 
   function clearBuild() {
     setSelection({})
+    setActiveMobileStep(0)
   }
 
   const resultHeading = incompatibleCount
@@ -103,13 +106,25 @@ export function PcBuilderPage() {
             <div><span className="section-kicker">SUA MONTAGEM</span><h2 id="builder-parts-title">Escolha as peças</h2></div>
             <button className="builder-reset" type="button" onClick={clearBuild} disabled={!selectedEntries.length}><RotateCcw size={15} /> Limpar</button>
           </div>
+          {/* The desktop list stays complete; the mobile view reveals one component at a time. */}
+          <div className="builder-mobile-stepper" aria-label="Etapas da montagem">
+            <div className="builder-mobile-step-status" aria-live="polite">
+              <span>Etapa {activeMobileStep + 1} de {pcBuildSlots.length}</span>
+              <strong>{pcBuildSlots[activeMobileStep].label}</strong>
+            </div>
+            <progress value={activeMobileStep + 1} max={pcBuildSlots.length} aria-label="Progresso da montagem" />
+            <div className="builder-mobile-step-controls">
+              <button type="button" onClick={() => setActiveMobileStep((step) => Math.max(0, step - 1))} disabled={activeMobileStep === 0}>Anterior</button>
+              <button type="button" onClick={() => setActiveMobileStep((step) => Math.min(pcBuildSlots.length - 1, step + 1))} disabled={activeMobileStep === pcBuildSlots.length - 1}>Próxima peça</button>
+            </div>
+          </div>
           <div className="builder-slot-list">
             {pcBuildSlots.map((slot, index) => {
               const options = getPcBuildOptions(slot.id)
               const selected = selection[slot.id]
               const currentPrice = selected ? getCurrentPrice(selected) : undefined
               return (
-                <article className={`builder-slot${selected ? ' builder-slot-selected' : ''}`} key={slot.id}>
+                <article className={`builder-slot${selected ? ' builder-slot-selected' : ''}${index === activeMobileStep ? ' builder-slot-mobile-active' : ''}`} key={slot.id}>
                   <div className="builder-slot-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</div>
                   <div className="builder-slot-main">
                     <label htmlFor={`slot-${slot.id}`}>
@@ -191,19 +206,24 @@ export function PcBuilderPage() {
           </section>
 
           <section className="builder-links-card">
-            <h2>Links para comprar</h2>
+            <h2>Links das ofertas</h2>
             {selectedEntries.length ? (
-              <ul>
-                {selectedEntries.map(({ slot, product }) => (
-                  <li key={slot.id}>
-                    <span>{slot.label}<strong>{product.name}</strong></span>
-                    {product.affiliateUrl
-                      ? <a href={product.affiliateUrl} target="_blank" rel="nofollow sponsored noreferrer" aria-label={`Comprar ${product.name} na loja`}>Comprar <ExternalLink size={14} /></a>
-                      : <span className="builder-no-link">Sem link</span>}
-                  </li>
-                ))}
-              </ul>
-            ) : <p>Selecione uma peça para reunir os links de compra aqui.</p>}
+              <>
+                <ul>
+                  {selectedEntries.map(({ slot, product }) => (
+                    <li key={slot.id}>
+                      <span>{slot.label}<strong>{product.name}</strong></span>
+                      {product.affiliateUrl && product.store
+                        ? <a href={product.affiliateUrl} target="_blank" rel="nofollow sponsored noreferrer" aria-label={`Ver oferta na ${storeName(product.store)}: ${product.name}`}>Ver oferta na {storeName(product.store)} <ExternalLink size={14} /></a>
+                        : <span className="builder-no-link">Oferta sem loja confirmada</span>}
+                    </li>
+                  ))}
+                </ul>
+                {selectedEntries.some(({ product }) => product.affiliateUrl && product.store) && (
+                  <p className="builder-affiliate-disclosure">Os links de ofertas podem gerar comissão por compras qualificadas, sem custo adicional para você.</p>
+                )}
+              </>
+            ) : <p>Selecione uma peça para reunir os links das ofertas aqui.</p>}
           </section>
         </aside>
       </div>

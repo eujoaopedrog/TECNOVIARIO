@@ -1,0 +1,13 @@
+{
+  "servers": {
+    "meupc": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "mcp-meupc"]
+    },
+    "descontosml": {
+      "type": "http",
+      "url": "https://descontosml.com/mcp"
+    }
+  }
+}
