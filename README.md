@@ -97,3 +97,13 @@ O serviço valida campos obrigatórios, gera `id` e `slug` quando ausentes, acei
 - Os produtos só exibem preços com data de atualização válida e inferior a 24 horas.
 
 Valide a compatibilidade e os direitos de uso das informações antes de publicar cada item. Esta documentação não substitui as políticas e os termos atualizados da Amazon ou dos titulares das imagens.
+
+## Atualização automática de preços
+
+O script `scripts/update-prices.mjs` consulta as lojas e atualiza `price`, `originalPrice`, `available`, `lastCheckedAt` e `priceHistory` em `src/data/products.json`. Se uma consulta falhar, o produto não é alterado (o preço expira sozinho em 24 h; nunca se "renova" um preço sem confirmação).
+
+- **Mercado Livre:** API oficial. Crie um app em https://developers.mercadolivre.com.br e guarde `ML_CLIENT_ID` e `ML_CLIENT_SECRET` como *secrets* do repositório no GitHub (Settings → Secrets and variables → Actions). Se o script não conseguir descobrir o ID do anúncio pelo link curto (`meli.la`), acrescente `"sourceId": "MLB..."` ao produto.
+- **KaBuM!:** depois de aprovado no programa de afiliados, cadastre a URL do feed de produtos como *secret* `KABUM_FEED_URL`. Cada produto precisa de `"store": "kabum"` (links de rede de afiliados não revelam a loja) e de `"sourceId"` com o código do item no feed. Se as colunas do feed forem diferentes das padrão, defina a *variable* `KABUM_FEED_COLUMNS`, por exemplo `{"id":"sku","price":"price","originalPrice":"old_price","availability":"availability"}`.
+- **Amazon:** sem atualização automática (continua manual) até a Creators API ser aprovada. O script ignora esses produtos.
+
+Comandos: `npm run update:prices` (grava), `node scripts/update-prices.mjs --dry-run` (só mostra o que mudaria) e `npm run test:prices` (testes com dados simulados). O workflow `.github/workflows/update-prices.yml` roda a cada 6 horas, faz o commit do `products.json` e o Cloudflare Pages publica o novo deploy.

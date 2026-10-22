@@ -29,7 +29,7 @@ function readFilters(params: URLSearchParams): FilterValues {
     deal: params.get('deal') === '1',
     available: params.get('available') === '1',
     updatedToday: params.get('updatedToday') === '1',
-    store: params.get('store') === 'amazon' || params.get('store') === 'mercadolivre' ? params.get('store') as ProductStore : '',
+    store: params.get('store') === 'amazon' || params.get('store') === 'mercadolivre' || params.get('store') === 'kabum' ? params.get('store') as ProductStore : '',
     minPrice: params.get('minPrice') ?? '',
     maxPrice: params.get('maxPrice') ?? '',
     category: params.get('category') ?? '',
@@ -124,7 +124,7 @@ export function FilterBar() {
         <label className="offer-filter-check"><input type="checkbox" checked={applied.updatedToday} onChange={(event) => update('updatedToday', event.target.checked)} /> Atualizados hoje</label>
         <label>Loja
           <select value={applied.store} onChange={(event) => update('store', event.target.value as FilterValues['store'])}>
-            <option value="">Todas</option><option value="amazon">Amazon</option><option value="mercadolivre">Mercado Livre</option>
+            <option value="">Todas</option><option value="amazon">Amazon</option><option value="mercadolivre">Mercado Livre</option><option value="kabum">KaBuM!</option>
           </select>
         </label>
         <label>Preço mínimo
@@ -150,7 +150,7 @@ export function FilterBar() {
               <label className="offer-filter-check"><input type="checkbox" checked={draft.deal} onChange={(event) => setDraft({ ...draft, deal: event.target.checked })} /> Só com desconto</label>
               <label className="offer-filter-check"><input type="checkbox" checked={draft.available} onChange={(event) => setDraft({ ...draft, available: event.target.checked })} /> Só disponíveis</label>
               <label className="offer-filter-check"><input type="checkbox" checked={draft.updatedToday} onChange={(event) => setDraft({ ...draft, updatedToday: event.target.checked })} /> Atualizados hoje</label>
-              <label>Loja<select value={draft.store} onChange={(event) => setDraft({ ...draft, store: event.target.value as FilterValues['store'] })}><option value="">Todas</option><option value="amazon">Amazon</option><option value="mercadolivre">Mercado Livre</option></select></label>
+              <label>Loja<select value={draft.store} onChange={(event) => setDraft({ ...draft, store: event.target.value as FilterValues['store'] })}><option value="">Todas</option><option value="amazon">Amazon</option><option value="mercadolivre">Mercado Livre</option><option value="kabum">KaBuM!</option></select></label>
               <div className="offer-price-range">
                 <label>Preço mínimo<input type="number" min="0" inputMode="decimal" value={draft.minPrice} onChange={(event) => setDraft({ ...draft, minPrice: event.target.value })} placeholder="R$" /></label>
                 <label>Preço máximo<input type="number" min="0" inputMode="decimal" value={draft.maxPrice} onChange={(event) => setDraft({ ...draft, maxPrice: event.target.value })} placeholder="R$" /></label>

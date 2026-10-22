@@ -6,7 +6,9 @@ interface StoreBadgeProps {
 }
 
 export function storeName(store: ProductStore): string {
-  return store === 'amazon' ? 'Amazon' : 'Mercado Livre'
+  if (store === 'amazon') return 'Amazon'
+  if (store === 'kabum') return 'KaBuM!'
+  return 'Mercado Livre'
 }
 
 export function StoreBadge({ store }: StoreBadgeProps) {

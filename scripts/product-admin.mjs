@@ -133,6 +133,7 @@ function detectStore(url) {
   const hostName = new URL(url).hostname.toLowerCase()
   if (['amazon.com.br', 'link.amazon', 'amzn.to'].includes(hostName) || hostName.endsWith('.amazon.com.br') || hostName === 'amazon.com' || hostName.endsWith('.amazon.com')) return 'amazon'
   if (['meli.la', 'mercadolivre.com.br', 'mercadolibre.com'].includes(hostName) || hostName.endsWith('.mercadolivre.com.br') || hostName.endsWith('.mercadolibre.com')) return 'mercadolivre'
+  if (hostName === 'kabum.com.br' || hostName.endsWith('.kabum.com.br')) return 'kabum'
   return undefined
 }
 
@@ -230,7 +231,7 @@ async function addProduct(productInput) {
   const description = typeof productInput.description === 'string' ? productInput.description.trim() : ''
   const editorialAssessment = typeof productInput.editorialAssessment === 'string' ? productInput.editorialAssessment.trim() : ''
   const affiliateUrl = typeof productInput.affiliateUrl === 'string' ? productInput.affiliateUrl.trim() : ''
-  const requestedStore = productInput.store === 'amazon' || productInput.store === 'mercadolivre' ? productInput.store : undefined
+  const requestedStore = productInput.store === 'amazon' || productInput.store === 'mercadolivre' || productInput.store === 'kabum' ? productInput.store : undefined
   const dataSource = typeof productInput.dataSource === 'string' ? productInput.dataSource.trim() : ''
   const compatibility = parseCompatibility(productInput)
 

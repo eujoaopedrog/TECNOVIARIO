@@ -74,6 +74,7 @@ function detectStore(affiliateUrl: string | undefined): ProductStore | undefined
   }
   if (hostname === 'link.amazon' || hostname === 'amzn.to' || hostname === 'amazon.com' || hostname.endsWith('.amazon.com') || hostname === 'amazon.com.br' || hostname.endsWith('.amazon.com.br')) return 'amazon'
   if (hostname === 'meli.la' || hostname === 'mercadolivre.com.br' || hostname.endsWith('.mercadolivre.com.br') || hostname === 'mercadolibre.com' || hostname.endsWith('.mercadolibre.com')) return 'mercadolivre'
+  if (hostname === 'kabum.com.br' || hostname.endsWith('.kabum.com.br')) return 'kabum'
   return undefined
 }
 
@@ -118,7 +119,7 @@ export const products: Product[] = catalogEntries.map((entry, index) => {
   if (detectedStore && entry.store && detectedStore !== entry.store) {
     throw new Error(`Store metadata does not match the affiliate link for "${entry.name}".`)
   }
-  const store = detectedStore ?? (entry.store === 'amazon' || entry.store === 'mercadolivre' ? entry.store : undefined)
+  const store = detectedStore ?? (entry.store === 'amazon' || entry.store === 'mercadolivre' || entry.store === 'kabum' ? entry.store : undefined)
   const priceHistory = normalizePriceHistory(entry.priceHistory)
   const price = typeof entry.price === 'number' && Number.isFinite(entry.price) && entry.price >= 0 ? entry.price : undefined
   const originalPrice = typeof entry.originalPrice === 'number' && Number.isFinite(entry.originalPrice) && entry.originalPrice > 0

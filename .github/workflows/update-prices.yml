@@ -1,0 +1,44 @@
+name: Atualizar preços
+
+on:
+  schedule:
+    - cron: '17 */6 * * *' # a cada 6 horas (UTC)
+  workflow_dispatch: # botão "Run workflow" na aba Actions
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-prices
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Rodar testes do atualizador
+        run: node --test scripts/update-prices.test.mjs
+      - name: Atualizar products.json
+        env:
+          ML_CLIENT_ID: ${{ secrets.ML_CLIENT_ID }}
+          ML_CLIENT_SECRET: ${{ secrets.ML_CLIENT_SECRET }}
+          KABUM_FEED_URL: ${{ secrets.KABUM_FEED_URL }}
+          KABUM_FEED_COLUMNS: ${{ vars.KABUM_FEED_COLUMNS }}
+        run: node scripts/update-prices.mjs
+      - name: Publicar alterações
+        run: |
+          if git diff --quiet -- src/data/products.json; then
+            echo "Nenhuma mudança de preço."
+            exit 0
+          fi
+          git config user.name "tecnoviario-bot"
+          git config user.email "tecnoviario-bot@users.noreply.github.com"
+          git add src/data/products.json
+          git commit -m "chore: atualizar preços automaticamente"
+          git pull --rebase
+          git push

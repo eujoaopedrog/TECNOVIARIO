@@ -7,7 +7,9 @@
     "dev": "vite",
     "admin:products": "node scripts/product-admin.mjs",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "update:prices": "node scripts/update-prices.mjs",
+    "test:prices": "node --test scripts/update-prices.test.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

@@ -21,7 +21,7 @@ export function OffersPage() {
     deal: params.get('deal') === '1',
     available: params.get('available') === '1',
     updatedToday: params.get('updatedToday') === '1',
-    store: params.get('store') === 'amazon' || params.get('store') === 'mercadolivre' ? params.get('store') as ProductStore : undefined,
+    store: params.get('store') === 'amazon' || params.get('store') === 'mercadolivre' || params.get('store') === 'kabum' ? params.get('store') as ProductStore : undefined,
     minPrice: optionalPrice(params.get('minPrice')),
     maxPrice: optionalPrice(params.get('maxPrice')),
     category: params.get('category') ?? undefined,

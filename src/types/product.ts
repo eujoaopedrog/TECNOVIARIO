@@ -11,7 +11,7 @@ export interface ProductCompatibility {
   integratedGraphics?: boolean
 }
 
-export type ProductStore = 'amazon' | 'mercadolivre'
+export type ProductStore = 'amazon' | 'mercadolivre' | 'kabum'
 export type DealTag = 'menor-preco-30d' | 'acabou-de-cair' | 'em-alta' | 'novo'
 
 export interface PriceHistoryPoint {
